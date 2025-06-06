@@ -186,7 +186,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to AI and ML</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/sijuswamy/Computational-Linear-Algebra" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/sijuswamyresearch/Amrita-Introduction-to-AI-and-ML" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -659,7 +659,7 @@ Agent
 <p>The most commonly known measure of central tendency is the <em>mean</em>, often referred to as the arithmetic average. Conceptually, if you were to plot all your data points on a number line, each with equal weight, the mean would represent the physical balancing point of that number line. It is calculated by summing all the values in a dataset and then dividing by the total count of those values. For an entire population, the mean is denoted by <code>μ</code> (mu) and calculated as <span class="math inline">\(\mu=\dfrac{\sum X_i}{N}\)</span>, where <code>Xᵢ</code> is each population value and <code>N</code> is the population size. For a sample drawn from a population, the sample mean is denoted by <code>x̄</code> (x-bar) or sometimes <code>M</code>, and calculated as <span class="math inline">\(\bar{x}=\dfrac{\sum x_i}{n}\)</span>, where <code>xᵢ</code> is each sample value and <code>n</code> is the sample size.</p>
 <p>The mean is most appropriately used for <em>numerical data</em> (specifically, data measured on an interval or ratio scale) that exhibits a <em>symmetrical distribution</em>, such as the bell-shaped normal distribution. In such cases, the mean accurately reflects the center of the data. Furthermore, because it incorporates every data point in its calculation, it is a comprehensive measure and serves as a foundational element for many other important statistical calculations, including variance, standard deviation, and numerous inferential statistical tests.</p>
 <p>However, a critical consideration for data analysts is the mean’s high <em>sensitivity to outliers</em>, or extreme values. A single unusually large or small value can disproportionately influence the mean, pulling it towards the outlier and potentially misrepresenting the “typical” value of the dataset. Consider, for instance, a small dataset of salaries: [₹30,000, ₹35,000, ₹40,000, ₹45,000, ₹500,000]. The calculated mean salary is ₹130,000. This figure, heavily skewed by the ₹500,000 outlier, doesn’t accurately represent the typical earnings within this group. It’s also important to note that calculating a mean for nominal categorical data (e.g., “average color”) is meaningless. While a mean <em>can</em> be computed for ordinal data if numerical codes are assigned, its interpretation must be approached with caution, as the intervals between ordinal categories are not necessarily uniform or quantitatively meaningful. <code>Python</code> implementation of this problem is here:</p>
-<div id="51c795fa" class="cell" data-execution_count="1">
+<div id="46b1dc6b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -684,7 +684,7 @@ NumPy Calculated Mean Salary: ₹130,000.00</code></pre>
 <p><strong>The Median: The Middle Ground</strong></p>
 <p>When data is skewed or contains significant outliers, the <em>median</em> often provides a more robust and representative measure of central tendency. The median is defined as the middle value in a dataset that has been arranged in ascending or descending order. It effectively divides the dataset into two equal halves, with 50% of the data points falling below it and 50% above.</p>
 <p>To calculate the median, the first step is always to sort the data. If the dataset contains an odd number of observations (<code>n</code>), the median is simply the value at the <code>(n+1)/2</code> position in the sorted list. If <code>n</code> is even, the median is the average of the two middle values, specifically the values at the <code>n/2</code> position and the <code>(n/2)+1</code> position. <code>Python</code> code to calculate median of the previous example is given below.</p>
-<div id="090f02a4" class="cell" data-execution_count="2">
+<div id="1dfe83f4" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Median for the salaries</span></span>
@@ -700,7 +700,7 @@ NumPy Calculated Mean Salary: ₹130,000.00</code></pre>
 <p>The <em>mode</em> offers a different perspective on central tendency by identifying the value or category that appears most frequently within a dataset. To find the mode, one simply counts the occurrences of each unique value or category; the one with the highest frequency is designated as the mode. A dataset might present with <strong>no mode</strong> if all values occur with equal frequency. It can be <em>unimodal</em> (having one mode), <em>bimodal</em> (having two modes, if two distinct values share the highest frequency), or even <em>multimodal</em> (having more than two modes).</p>
 <p>A significant advantage of the mode is that it is the <em>only</em> measure of central tendency appropriate for <em>nominal categorical data</em>. For example, in a dataset of car sales, the mode would tell us the most commonly sold car color. The mode can also be applied to ordinal and numerical data (both discrete and continuous, though for continuous data, values are often grouped into intervals or bins first to determine a modal class). Like the median, the mode is <em>not affected by outliers</em>. However, it’s important to recognize that the mode may not always be unique, or in some datasets, it might not exist at all, which can limit its utility as a sole summary statistic. In distributions that are heavily skewed, the mode might be located at one end and may not be a good indicator of the overall central location of the data. Nevertheless, in multimodal distributions, the modes are valuable for highlighting multiple points of concentration or peaks within the data.</p>
 <p>A <code>Python</code> example to find the mode of a data is given below:</p>
-<div id="61c58d4f" class="cell" data-execution_count="3">
+<div id="9145ae0e" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example for Mode</span></span>
@@ -715,7 +715,7 @@ NumPy Calculated Mean Salary: ₹130,000.00</code></pre>
 Mode (SciPy): 3, Count: 3</code></pre>
 </div>
 </div>
-<div id="04d76e18" class="cell" data-execution_count="4">
+<div id="e049f013" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For multiple modes or categorical data, Pandas is often easier</span></span>
@@ -758,7 +758,7 @@ Choosing the Right Measure: A Data Analyst’s Perspective
 <li><strong>The Range:</strong>- A Simplistic View of Spread</li>
 </ol>
 <p>The <em>range</em> is the simplest measure of dispersion, calculated merely as the difference between the maximum and minimum values in a dataset: <code>Range = Maximum Value - Minimum Value</code>. While straightforward to compute, its utility is limited because it only considers the two most extreme data points. Consequently, the range is highly <em>sensitive to outliers</em>. A single unusually high or low value can dramatically inflate the range, providing a potentially misleading picture of the overall variability of the majority of the data. For instance, in our salary example [₹30k, ₹35k, ₹40k, ₹45k, ₹500k], the range is ₹470k, largely driven by the single outlier. If the outlier were absent, the range would be much smaller (₹15k). Thus, while the range gives a quick sense of the total span of the data, it is generally not a robust measure of dispersion. A <code>Python</code> example is given below:</p>
-<div id="a5751024" class="cell" data-execution_count="5">
+<div id="befa0aa4" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Range for salaries</span></span>
@@ -779,7 +779,7 @@ Range of Salaries: ₹470,000.00</code></pre>
 <p>A more sophisticated and widely used measure of dispersion is <em>variance</em>. Variance quantifies the average of the squared differences of each data point from the mean of the dataset. Squaring the differences serves two purposes: it prevents negative and positive deviations from canceling each other out, and it emphasizes larger deviations more heavily.</p>
 <p>For an entire population, the variance (<code>σ²</code>, sigma-squared) is calculated as: <span class="math inline">\(\sigma^2=\dfrac{\sum(X_i-\mu)^2}{N}\)</span>, where <code>Xᵢ</code> is each population value, <code>μ</code> is the population mean, and <code>N</code> is the population size.</p>
 <p>When calculating variance from a sample to estimate the population variance, a slight modification is used for the sample variance (<code>s²</code>): <span class="math inline">\(s^2=\dfrac{\sum(x_i-\bar{x})^2}{n-1}\)</span>. Here, <code>xᵢ</code> is each sample value, <code>x̄</code> is the sample mean, and <code>n</code> is the sample size. The use of <code>(n - 1)</code> in the denominator, known as Bessel’s correction, provides an unbiased estimate of the population variance from the sample data. A <code>python</code> example to find variance of a data is given below:</p>
-<div id="df691ef8" class="cell" data-execution_count="6">
+<div id="e27c6af8" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance for salaries (sample variance, ddof=1 by default in NumPy)</span></span>
@@ -809,7 +809,7 @@ Interpretability issue of variance
 </ol>
 <p>To overcome the unit interpretation issue of variance, we use the <em>standard deviation</em>. The standard deviation is simply the square root of the variance. It measures the typical or average amount by which data points deviate from the mean. The population standard deviation (<code>σ</code>, sigma) is <code>σ = √σ²</code>, and the sample standard deviation (<code>s</code>) is <code>s = √s²</code>.</p>
 <p>A simple <code>Python</code> example is here:</p>
-<div id="bb6e2780" class="cell" data-execution_count="7">
+<div id="20164166" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard Deviation for salaries (sample standard deviation)</span></span>
@@ -847,7 +847,7 @@ Standard deviation over variance in statistical calculations
 <p>The <em>Interquartile Range</em> is then calculated as the difference between the third and first quartiles: <code>IQR = Q3 - Q1</code>.</p>
 <p>Because the IQR focuses on the central portion of the data distribution, it is not influenced by extreme values in the tails. This makes it a particularly useful measure of spread for skewed distributions or datasets known to contain outliers. The IQR is also instrumental in constructing box plots and in a common rule of thumb for identifying potential outliers: data points falling below <code>Q1 - 1.5 * IQR</code> or above <code>Q3 + 1.5 * IQR</code> are often flagged for further investigation.</p>
 <p>As a data analyst, you would choose measures of dispersion based on the data’s characteristics and your analytical goals. If your data is symmetric and free of significant outliers, the standard deviation provides a comprehensive measure. If the data is skewed or outliers are a concern, the IQR offers a more robust alternative for understanding the spread of the bulk of your data. Following <code>Python</code> code demonstrate the IQR calculation of the previously discussed salary data.</p>
-<div id="2941a7a7" class="cell" data-execution_count="8">
+<div id="c38b70b2" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IQR for salaries</span></span>
@@ -880,7 +880,7 @@ IQR of Salaries (SciPy): ₹10,000.00</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>study_hours <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>])</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>exam_scores <span class="op">=</span> np.array([<span class="dv">65</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">60</span>, <span class="dv">75</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>Python</code> code to solve this problem is given below:</p>
-<div id="4d823dca" class="cell" data-execution_count="9">
+<div id="8d8f12cb" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -945,7 +945,7 @@ Figure&nbsp;3.3: Skewness and Normal curve
 <p><strong>Kurtosis: Measuring “Tailedness” and “Peakedness”</strong></p>
 <p><em>Kurtosis</em> measures the “tailedness” or “peakedness” of a probability distribution relative to a normal distribution. It describes the concentration of data in the tails and around the peak. The kurtosis of a standard normal distribution is 3. Often, “excess kurtosis” is reported, which is <code>Kurtosis - 3</code>. * <em>Leptokurtic distributions (positive excess kurtosis, &gt; 0):</em> These distributions have a sharper peak and heavier (fatter) tails than a normal distribution. This implies that extreme values (outliers) are more likely to occur compared to a normal distribution. More of the variance is due to these infrequent extreme deviations. * <em>Mesokurtic distributions (excess kurtosis ≈ 0):</em> These have a similar degree of peakedness and tailedness as a normal distribution. * <em>Platykurtic distributions (negative excess kurtosis, &lt; 0):</em> These distributions are flatter and have thinner tails than a normal distribution. Extreme values are less likely. The variance is more due to frequent, modestly sized deviations.</p>
 <p>Kurtosis helps analysts understand the risk of outliers in a dataset. A high kurtosis suggests that the data has a higher propensity for producing extreme values, which can be critical in fields like finance (risk management) or quality control. <code>Python</code> code to find the skewness and kurtosis of the previous salary data is here:</p>
-<div id="62a65536" class="cell" data-execution_count="10">
+<div id="6a1c31e7" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Skewness and Kurtosis for salaries</span></span>
@@ -964,7 +964,7 @@ Excess Kurtosis of Salaries: 0.25</code></pre>
 </div>
 </div>
 <p>Another demonstration of skewness and kurtosis of a symmetric data is given below.</p>
-<div id="0cfeb810" class="cell" data-execution_count="11">
+<div id="26246fb3" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of a more symmetric dataset</span></span>
@@ -1009,7 +1009,7 @@ Excess Kurtosis of Symmetric Data: -0.48</code></pre>
 <li>They allow for easy <em>comparison of distributions across multiple groups</em> when plotted side-by-side.</li>
 </ul>
 <p>The five point summary of the previous salary data is visualized with a box-plot in <code>Python</code> code.</p>
-<div id="67fafbfb" class="cell" data-execution_count="12">
+<div id="9232fc21" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1084,7 +1084,7 @@ dtype: object</code></pre>
 <li>Skewness and Kurtosis</li>
 <li>Generate a five-point summary and a box plot.</li>
 </ol>
-<div id="91d2f7b4" class="cell" data-execution_count="13">
+<div id="026cf6c9" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1199,7 +1199,7 @@ dtype: float64</code></pre>
 <li>Which brand appears more consistent in its lifespan based on these statistics?</li>
 <li>Generate side-by-side box plots to visually compare their distributions.</li>
 </ol>
-<div id="453df7c8" class="cell" data-execution_count="14">
+<div id="1858e38b" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
