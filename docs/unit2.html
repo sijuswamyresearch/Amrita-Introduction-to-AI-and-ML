@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Unit 2- Intelligent Agents and Foundations of Data Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="logo.png" class="img-fluid figure-img"></p>
+<figcaption>Introduction to AI &amp; ML</figcaption>
+</figure>
+</div>
+</div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#rational-intelligent-agents" id="toc-rational-intelligent-agents" class="nav-link" data-scroll-target="#rational-intelligent-agents">Rational Intelligent Agents</a>
+  <ul class="collapse">
+  <li><a href="#what-is-an-agent" id="toc-what-is-an-agent" class="nav-link" data-scroll-target="#what-is-an-agent">What is an Agent?</a></li>
+  <li><a href="#agents-and-environments-peas-framework" id="toc-agents-and-environments-peas-framework" class="nav-link" data-scroll-target="#agents-and-environments-peas-framework">Agents and Environments (PEAS Framework)</a></li>
+  <li><a href="#rationality-and-rational-agents" id="toc-rationality-and-rational-agents" class="nav-link" data-scroll-target="#rationality-and-rational-agents">Rationality and Rational Agents</a></li>
+  </ul></li>
+  <li><a href="#the-nature-of-environments" id="toc-the-nature-of-environments" class="nav-link" data-scroll-target="#the-nature-of-environments">The Nature of Environments</a></li>
+  <li><a href="#the-structure-of-agents" id="toc-the-structure-of-agents" class="nav-link" data-scroll-target="#the-structure-of-agents">The Structure of Agents</a>
+  <ul class="collapse">
+  <li><a href="#agent-programs-and-agent-architecture" id="toc-agent-programs-and-agent-architecture" class="nav-link" data-scroll-target="#agent-programs-and-agent-architecture">Agent Programs and Agent Architecture</a></li>
+  <li><a href="#types-of-agent-programs" id="toc-types-of-agent-programs" class="nav-link" data-scroll-target="#types-of-agent-programs">Types of Agent Programs</a></li>
+  </ul></li>
+  <li><a href="#introduction-to-data-science-and-statistics" id="toc-introduction-to-data-science-and-statistics" class="nav-link" data-scroll-target="#introduction-to-data-science-and-statistics">Introduction to Data Science and Statistics</a>
+  <ul class="collapse">
+  <li><a href="#overview-of-data-science-recap-and-reinforcement" id="toc-overview-of-data-science-recap-and-reinforcement" class="nav-link" data-scroll-target="#overview-of-data-science-recap-and-reinforcement">Overview of Data Science (Recap and Reinforcement)</a></li>
+  <li><a href="#why-statistics-for-data-science" id="toc-why-statistics-for-data-science" class="nav-link" data-scroll-target="#why-statistics-for-data-science">Why Statistics for Data Science?</a></li>
+  <li><a href="#basic-statistical-concepts" id="toc-basic-statistical-concepts" class="nav-link" data-scroll-target="#basic-statistical-concepts">Basic Statistical Concepts</a></li>
+  </ul></li>
+  <li><a href="#descriptive-statistics-summarizing-data" id="toc-descriptive-statistics-summarizing-data" class="nav-link" data-scroll-target="#descriptive-statistics-summarizing-data">Descriptive Statistics: Summarizing Data</a>
+  <ul class="collapse">
+  <li><a href="#types-of-data" id="toc-types-of-data" class="nav-link" data-scroll-target="#types-of-data">Types of Data</a></li>
+  <li><a href="#measures-of-central-tendency-finding-the-center-of-your-data" id="toc-measures-of-central-tendency-finding-the-center-of-your-data" class="nav-link" data-scroll-target="#measures-of-central-tendency-finding-the-center-of-your-data">Measures of Central Tendency: Finding the “Center” of Your Data</a></li>
+  <li><a href="#measures-of-dispersion-variability-quantifying-the-spread-of-data" id="toc-measures-of-dispersion-variability-quantifying-the-spread-of-data" class="nav-link" data-scroll-target="#measures-of-dispersion-variability-quantifying-the-spread-of-data">Measures of Dispersion (Variability): Quantifying the Spread of Data</a></li>
+  <li><a href="#covariance-measuring-joint-variability" id="toc-covariance-measuring-joint-variability" class="nav-link" data-scroll-target="#covariance-measuring-joint-variability">Covariance: Measuring Joint Variability</a></li>
+  <li><a href="#skewness-and-kurtosis-describing-the-shape-of-a-distribution" id="toc-skewness-and-kurtosis-describing-the-shape-of-a-distribution" class="nav-link" data-scroll-target="#skewness-and-kurtosis-describing-the-shape-of-a-distribution">Skewness and Kurtosis: Describing the Shape of a Distribution</a></li>
+  <li><a href="#visualizing-distribution-key-points-using-a-box-plot" id="toc-visualizing-distribution-key-points-using-a-box-plot" class="nav-link" data-scroll-target="#visualizing-distribution-key-points-using-a-box-plot">Visualizing distribution key points using a Box plot</a></li>
+  </ul></li>
+  <li><a href="#problems-and-python-solutions-in-descriptive-statistics" id="toc-problems-and-python-solutions-in-descriptive-statistics" class="nav-link" data-scroll-target="#problems-and-python-solutions-in-descriptive-statistics">Problems and Python solutions in descriptive statistics</a></li>
+  <li><a href="#unit-overview" id="toc-unit-overview" class="nav-link" data-scroll-target="#unit-overview">Unit overview</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="unit2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Unit 2- Intelligent Agents and Foundations of Data Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this unit, we delve into two crucial areas that form the bedrock of modern AI and Data Science. First, we will explore the concept of <em>Rational Intelligent Agents</em>, which provides a powerful framework for understanding and building AI systems. We’ll examine what agents are, how they interact with their environments, the different types of environments they operate in, and the various structures and designs for intelligent agents. This part draws mainly from the principles outlined in <span class="citation" data-cites="russell2016artificial">Russell and Norvig (<a href="#ref-russell2016artificial" role="doc-biblioref">2016</a>)</span>.</p>
+<p>Secondly, this unit will serve as your formal <em>Introduction to Data Science and foundational Statistics</em>. We will reinforce what Data Science entails and then dive into fundamental statistical concepts. Understanding statistics is non-negotiable for anyone serious about Data Science, as it provides the tools to summarize data, make inferences, and quantify uncertainty. We’ll cover topics from sampling techniques and sample characteristics to descriptive statistics, including measures of central tendency, dispersion, and distribution shape.</p>
+<p>By the end of this unit, you should be able to analyze AI systems from an agent perspective and apply basic statistical methods to describe and interpret datasets.</p>
+</section>
+<section id="rational-intelligent-agents" class="level2">
+<h2 class="anchored" data-anchor-id="rational-intelligent-agents">Rational Intelligent Agents</h2>
+<p>The concept of an “agent” is central to understanding AI. It allows us to think about intelligent systems in a unified way.</p>
+<section id="what-is-an-agent" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-an-agent">What is an Agent?</h3>
+<p>An <em>agent</em> is anything that can be viewed as perceiving its environment through <em>sensors</em> and acting upon that environment through <em>actuators</em>. Let’s go through the key terms in this definition:</p>
+<ul>
+<li><strong>Sensors:</strong> These are the means by which an agent gathers information about its environment. For a human agent, sensors include eyes, ears, nose, skin, etc. For a robotic agent, sensors might include cameras, infrared finders, GPS, bump sensors, etc. For a software agent, sensors could be keyboard inputs, mouse clicks, network packets, or API calls that provide data.</li>
+<li><strong>Actuators:</strong> These are the means by which an agent performs actions in its environment. For a human, actuators include hands, legs, vocal cords, etc. For a robot, actuators might be motors controlling wheels or limbs, grippers, display screens, speakers, etc. For a software agent, actuators could be displaying information on a screen, writing to a file, sending network packets, or making API calls to perform an action.</li>
+</ul>
+<p>The agent’s <em>percept sequence</em> is the complete history of everything the agent has ever perceived. An agent’s choice of action at any given instant can depend on the entire percept sequence observed so far.</p>
+</section>
+<section id="agents-and-environments-peas-framework" class="level3">
+<h3 class="anchored" data-anchor-id="agents-and-environments-peas-framework">Agents and Environments (PEAS Framework)</h3>
+<p>To design an intelligent agent, we must specify its task environment. <span class="citation" data-cites="russell2016artificial">Russell and Norvig (<a href="#ref-russell2016artificial" role="doc-biblioref">2016</a>)</span> introduce the <strong>PEAS</strong> framework to do this:</p>
+<ul>
+<li><strong>P</strong>erformance Measure: How is the success of the agent defined? What criteria are used to evaluate its behavior? This should be an objective measure.</li>
+<li><strong>E</strong>nvironment: What is the context in which the agent operates? This includes everything external to the agent that it interacts with or that influences its choices.</li>
+<li><strong>A</strong>ctuators: What actions can the agent perform?</li>
+<li><strong>S</strong>ensors: What can the agent perceive from its environment?</li>
+</ul>
+<p>An illustration of these concepts is given in <a href="#fig-agent" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div id="fig-agent" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-agent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    E(Environment) --&gt;|Percepts| A(Agent);
+    A --&gt;|Actions| E;
+    subgraph Agent
+        S[Sensors] --&gt; P(Processing);
+        P --&gt; AC[Actuators];
+    end
+    S -.-&gt; E;
+    AC -.-&gt; E;
+
+    style A fill:#b9f,stroke:#333,stroke-width:2px
+    style E fill:#9f9,stroke:#333,stroke-width:2px
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-agent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Agent and Environment.
+</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><strong>Example: A Self-Driving Car (Automated Taxi)</strong></p>
+</blockquote>
+<ul>
+<li><strong>Performance Measure:</strong> Safety (no accidents), speed (reaching destination quickly), legality (obeying traffic laws), passenger comfort, minimizing fuel consumption.</li>
+<li><strong>Environment:</strong> Roads, other vehicles (cars, trucks, bikes), pedestrians, traffic signals, weather conditions, road signs, lane markings.</li>
+<li><strong>Actuators:</strong> Steering wheel, accelerator, brake, signal lights, horn, display for passengers.</li>
+<li><strong>Sensors:</strong> Cameras (video), LiDAR, radar, GPS, speedometer, odometer, accelerometer, engine sensors, microphones.</li>
+</ul>
+<p>Defining the PEAS for a task is often the first step in designing an agent.</p>
+</section>
+<section id="rationality-and-rational-agents" class="level3">
+<h3 class="anchored" data-anchor-id="rationality-and-rational-agents">Rationality and Rational Agents</h3>
+<p>A <strong>rational agent</strong> is one that acts to achieve the <strong>best expected outcome</strong>, given its percept sequence and any built-in knowledge it has. “Best” is defined by the performance measure.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important points about rationality:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Rationality is not omniscience:</strong> An omniscient agent knows the actual outcome of its actions and can act accordingly; but omniscience is impossible in reality. Rationality is about maximizing <em>expected</em> performance, given the information available from percepts. An action might turn out badly in hindsight, but still have been rational if it was the best choice given what was known at the time.</li>
+<li><strong>Rationality depends on the PEAS:</strong> An agent might be rational with respect to one performance measure but not another, or in one environment but not another.</li>
+<li><strong>Information gathering is often a rational action:</strong> If an agent doesn’t know something important, a rational action might be to perform an exploratory action to gain more information (e.g., looking before crossing the street).</li>
+<li><strong>Learning is essential for rationality in complex environments:</strong> An agent that learns can improve its performance over time and adapt to unknown or changing environments.</li>
+</ul>
+</div>
+</div>
+<p>An ideal rational agent, for each possible percept sequence, does whatever action is expected to maximize its performance measure, on the basis of the evidence provided by the percept sequence and whatever built-in knowledge the agent has.</p>
+</section>
+</section>
+<section id="the-nature-of-environments" class="level2">
+<h2 class="anchored" data-anchor-id="the-nature-of-environments">The Nature of Environments</h2>
+<p>The characteristics of the task environment significantly influence the design of an intelligent agent.</p>
+<div id="fig-environ" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-environ-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="environments.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-environ-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The nature of environments- mindmap
+</figcaption>
+</figure>
+</div>
+<p>Russell and Norvig (2010) describe several dimensions along which environments can be classified:</p>
+<ol type="1">
+<li><strong>Fully Observable vs.&nbsp;Partially Observable:</strong>
+<ul>
+<li><strong>Fully Observable:</strong> If an agent’s sensors give it access to the complete state of the environment at each point in time, then the environment is fully observable. The agent does not need to maintain much internal state to keep track of the world.</li>
+<li><strong>Partially Observable:</strong> If the agent only has access to partial information about the state (e.g., due to noisy or inaccurate sensors, or parts of the state being hidden), it’s partially observable. The agent may need to maintain an internal model of the world to estimate the current state.</li>
+<li><em>Example:</em> A chess game with a visible board is fully observable. A poker game where opponents’ cards are hidden is partially observable. A self-driving car operates in a partially observable environment (it can’t see around corners or know other drivers’ exact intentions).</li>
+</ul></li>
+<li><strong>Deterministic vs.&nbsp;Stochastic (or Non-deterministic):</strong>
+<ul>
+<li><strong>Deterministic:</strong> If the next state of the environment is completely determined by the current state and the action executed by the agent, the environment is deterministic.</li>
+<li><strong>Stochastic:</strong> If there is uncertainty about the next state even when the current state and agent’s action are known, the environment is stochastic. This often implies probabilities associated with outcomes.</li>
+<li><strong>Non-deterministic:</strong> If the outcomes are not determined by the current state and action, but are not described by probabilities (i.e., actions can have a set of possible outcomes, but no probabilities are assigned). From an agent design perspective, if an environment is non-deterministic, it is often treated as stochastic.</li>
+<li><em>Example:</em> Chess is deterministic. A card game with shuffling is stochastic. A self-driving car is stochastic (e.g., tire blowouts, unpredictable actions of other drivers).</li>
+</ul></li>
+<li><strong>Episodic vs.&nbsp;Sequential:</strong>
+<ul>
+<li><strong>Episodic:</strong> The agent’s experience is divided into atomic “episodes.” In each episode, the agent perceives and then performs a single action. The choice of action in one episode does not affect future episodes.</li>
+<li><strong>Sequential:</strong> The current decision can affect all future decisions. The agent needs to think ahead.</li>
+<li><em>Example:</em> An image classification task is often episodic (classifying one image doesn’t directly affect the next). Chess and driving are sequential.</li>
+</ul></li>
+<li><strong>Static vs.&nbsp;Dynamic:</strong>
+<ul>
+<li><strong>Static:</strong> The environment does not change while the agent is deliberating or deciding on an action.</li>
+<li><strong>Dynamic:</strong> The environment can change while the agent is thinking. If the agent takes too long, the world changes, and its chosen action might no longer be appropriate.</li>
+<li><strong>Semidynamic:</strong> The environment itself doesn’t change with the passage of time, but the agent’s performance score does.</li>
+<li><em>Example:</em> A crossword puzzle is static. Chess played with a clock is semidynamic. Driving is dynamic.</li>
+</ul></li>
+<li><strong>Discrete vs.&nbsp;Continuous:</strong>
+<ul>
+<li>This refers to the nature of the environment’s state, the way time is handled, and the agent’s percepts and actions.</li>
+<li><strong>Discrete:</strong> A finite or countably infinite number of distinct states, percepts, and actions.</li>
+<li><strong>Continuous:</strong> States, time, percepts, or actions can take on values from a continuous range.</li>
+<li><em>Example:</em> Chess is discrete. Driving involves continuous time, positions, speeds, etc.</li>
+</ul></li>
+<li><strong>Single-agent vs.&nbsp;Multi-agent:</strong>
+<ul>
+<li><strong>Single-agent:</strong> Only one agent is operating in the environment.</li>
+<li><strong>Multi-agent:</strong> Multiple agents are present. This introduces complexities like cooperation, competition, or communication.
+<ul>
+<li><strong>Competitive Multi-agent:</strong> Agents have conflicting goals (e.g., chess).</li>
+<li><strong>Cooperative Multi-agent:</strong> Agents share common goals (e.g., a team of robots collaborating on a task).</li>
+</ul></li>
+<li><em>Example:</em> Solving a crossword puzzle is single-agent. Chess is competitive multi-agent. A team of soccer-playing robots is cooperative multi-agent. Driving is multi-agent (usually competitive in some sense, but with elements of cooperation like following traffic laws).</li>
+</ul></li>
+</ol>
+<p>Understanding these properties is crucial because the complexity of the agent design often depends heavily on the nature of its environment. The “real world” is typically partially observable, stochastic, sequential, dynamic, continuous, and multi-agent.</p>
+</section>
+<section id="the-structure-of-agents" class="level2">
+<h2 class="anchored" data-anchor-id="the-structure-of-agents">The Structure of Agents</h2>
+<p>An agent is implemented by an <strong>agent program</strong>, which is a function that maps percepts to actions. This program runs on some <strong>computing device with physical sensors and actuators</strong>, referred to as the <strong>agent architecture</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Agent
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>Agent = Architecture + Program</code></p>
+</div>
+</div>
+<p>We can categorize agent programs into several types based on their complexity and capabilities.</p>
+<section id="agent-programs-and-agent-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="agent-programs-and-agent-architecture">Agent Programs and Agent Architecture</h3>
+<p>The function that implements the agent’s mapping from percepts to actions is called an agent program. It takes the current percept as input and returns an action. The physical or computational platform on which the agent program runs is termed as the agent architecture. This includes the sensors that provide percepts and the actuators that execute actions.</p>
+</section>
+<section id="types-of-agent-programs" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-agent-programs">Types of Agent Programs</h3>
+<p><span class="citation" data-cites="russell2016artificial">Russell and Norvig (<a href="#ref-russell2016artificial" role="doc-biblioref">2016</a>)</span> (Chapter 2) describe a hierarchy of agent designs. A summary of this discussion is given here.</p>
+<ol type="1">
+<li><strong>Simple Reflex Agents:</strong>
+<ul>
+<li><strong>How they work:</strong> These agents select actions based <em>only</em> on the current percept, ignoring the rest of the percept history. They use condition-action rules (if-then rules).</li>
+<li><code>If (condition) then action</code></li>
+<li><strong>Internal State:</strong> No memory of past percepts. They are stateless.</li>
+<li><strong>Limitations:</strong> Can only work if the correct decision can be made based on the current percept alone. They get stuck in infinite loops easily if operating in partially observable environments.</li>
+<li><em>Example:</em> A thermostat that turns on heat if the temperature is below a set point and turns it off if above. An automated vacuum cleaner that changes direction when its bump sensor is triggered.</li>
+</ul></li>
+<li><strong>Model-based Reflex Agents (or Agents with Internal State):</strong>
+<ul>
+<li><strong>How they work:</strong> To handle partial observability, these agents maintain some internal state that depends on the percept history and reflects some of the unobserved aspects of the current state. This internal state is a “model” of the world.</li>
+<li>They need two kinds of knowledge:
+<ol type="1">
+<li>How the world evolves independently of the agent.</li>
+<li>How the agent’s own actions affect the world.</li>
+</ol></li>
+<li>They update their internal state based on the current percept and their model of how the world works. Then, they choose an action based on this internal state, similar to a simple reflex agent.</li>
+<li><strong>Internal State:</strong> Maintains a model of the current state of the world.</li>
+<li><em>Example:</em> A self-driving car needs to keep track of where other cars <em>might</em> be even if it can’t see them at the moment, based on its model of traffic flow.</li>
+</ul></li>
+<li><strong>Goal-based Agents:</strong>
+<ul>
+<li><strong>How they work:</strong> Knowing the current state of the environment is not always enough to decide what to do. Sometimes the agent needs a <strong>goal</strong> – a description of desirable situations. These agents combine their model of the world with a goal to choose actions.</li>
+<li>They might involve search and planning to find a sequence of actions that achieves the goal. The decision process is fundamentally different from reflex agents; it considers the future.</li>
+<li><strong>Internal State:</strong> Maintains a model of the world and information about its current goal(s).</li>
+<li><strong>Flexibility:</strong> More flexible than reflex agents because the knowledge supporting their decisions is explicitly represented and can be modified. If the goal changes, the agent can adapt.</li>
+<li><em>Example:</em> A delivery robot trying to reach a specific destination. A route-finding system in a GPS.</li>
+</ul></li>
+<li><strong>Utility-based Agents:</strong>
+<ul>
+<li><strong>How they work:</strong> Goals alone are often not enough to generate high-quality behavior in many environments. There might be multiple ways to achieve a goal, some better (faster, safer, cheaper) than others. A <strong>utility function</strong> maps a state (or a sequence of states) onto a real number, which describes the associated degree of “happiness” or desirability.</li>
+<li>These agents choose actions that maximize their expected utility. If there are conflicting goals, or uncertainty in outcomes, a utility function provides a way to make rational trade-offs.</li>
+<li><strong>Internal State:</strong> Maintains a model of the world and a utility function.</li>
+<li><strong>Rationality:</strong> Provides a more general and complete basis for rational decision-making than goal-based agents.</li>
+<li><em>Example:</em> A self-driving car making decisions that balance speed, safety, fuel efficiency, and passenger comfort, where each of these contributes to an overall utility. A trading agent deciding which stocks to buy or sell to maximize expected profit while managing risk.</li>
+</ul></li>
+<li><strong>Learning Agents:</strong>
+<ul>
+<li><strong>How they work:</strong> Learning agents can improve their performance over time by modifying their internal components based on experience. A learning agent can be divided into four conceptual components:
+<ol type="1">
+<li><strong>Learning Element:</strong> Responsible for making improvements. It uses feedback from the “critic” on how the agent is doing and determines how the “performance element” should be modified to do better in the future.</li>
+<li><strong>Performance Element:</strong> Responsible for selecting external actions. It is what we previously considered to be the entire agent (e.g., a model-based, goal-based, or utility-based agent).</li>
+<li><strong>Critic:</strong> Tells the learning element how well the agent is doing with respect to a fixed performance standard. It provides feedback.</li>
+<li><strong>Problem Generator:</strong> Responsible for suggesting actions that will lead to new and informative experiences. This helps the agent explore its environment.</li>
+</ol></li>
+<li><strong>Adaptability:</strong> Can operate in initially unknown environments and become more competent than their initial knowledge might allow.</li>
+<li><em>Example:</em> A spam filter that learns to better classify emails based on user feedback. A game-playing AI that improves its strategy by playing many games.</li>
+</ul></li>
+</ol>
+<p>These agent types represent increasing levels of generality and intelligence. Real-world AI systems often combine aspects of several of these types.</p>
+</section>
+</section>
+<section id="introduction-to-data-science-and-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-data-science-and-statistics">Introduction to Data Science and Statistics</h2>
+<p>While Unit 1 introduced Data Science, this section reinforces its overview and transitions into the crucial role of statistics within it.</p>
+<section id="overview-of-data-science-recap-and-reinforcement" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-data-science-recap-and-reinforcement">Overview of Data Science (Recap and Reinforcement)</h3>
+<p>As a reminder, <em>Data Science is an interdisciplinary field focused on extracting knowledge and insights from data</em>. It involves a blend of skills from computer science (programming, algorithms), statistics, and domain expertise. The goal is typically to understand past and present phenomena and to make predictions or informed decisions about the future. The Data Science pipeline often includes:</p>
+<ol type="1">
+<li><strong>Problem Formulation/Question Asking:</strong> Defining what you want to learn or predict.</li>
+<li><strong>Data Acquisition:</strong> Gathering relevant data.</li>
+<li><strong>Data Cleaning and Preprocessing:</strong> Handling missing values, errors, and transforming data into a usable format.</li>
+<li><strong>Exploratory Data Analysis (EDA):</strong> Visualizing and summarizing data to understand its main characteristics and patterns.</li>
+<li><strong>Modeling:</strong> Applying statistical or machine learning models to make predictions or inferences.</li>
+<li><strong>Evaluation:</strong> Assessing the performance and validity of the model.</li>
+<li><strong>Communication/Deployment:</strong> Presenting findings or deploying the model for use.</li>
+</ol>
+</section>
+<section id="why-statistics-for-data-science" class="level3">
+<h3 class="anchored" data-anchor-id="why-statistics-for-data-science">Why Statistics for Data Science?</h3>
+<p>Statistics is the science of collecting, analyzing, interpreting, presenting, and organizing data. It is absolutely fundamental to Data Science because:</p>
+<ul>
+<li><strong>Describing Data:</strong> Statistics provides methods (descriptive statistics) to summarize and describe the main features of a dataset (e.g., average values, spread of data).</li>
+<li><strong>Making Inferences:</strong> It allows us to make inferences or draw conclusions about a larger <em>population</em> based on a smaller <em>sample</em> of data (inferential statistics).</li>
+<li><strong>Quantifying Uncertainty:</strong> Statistical methods help us understand and quantify the uncertainty associated with our data, models, and conclusions.</li>
+<li><strong>Designing Experiments:</strong> It provides principles for designing effective data collection strategies and experiments to answer specific questions.</li>
+<li><strong>Model Building and Validation:</strong> Many machine learning models are built upon statistical principles, and statistics provides tools for evaluating model performance and significance.</li>
+</ul>
+<p>Without a solid understanding of statistics, a data scientist risks misinterpreting data, drawing incorrect conclusions, and building flawed models.</p>
+</section>
+<section id="basic-statistical-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="basic-statistical-concepts">Basic Statistical Concepts</h3>
+<p>Let’s define some foundational statistical terms:</p>
+<ul>
+<li><strong>Population:</strong> The entire group of individuals, items, or data points that we are interested in studying.
+<ul>
+<li><em>Example:</em> All students enrolled at Amrita Vishwa Vidyapeetham; all transactions made by a company in a year; all stars in the Milky Way galaxy.</li>
+</ul></li>
+<li><strong>Sample:</strong> A subset of the population that is selected for analysis. We study samples because it’s often impractical or impossible to study the entire population.
+<ul>
+<li><em>Example:</em> 500 randomly selected students from Amrita; 1000 randomly selected transactions from the past month; a sample of 100 stars observed by a telescope.</li>
+</ul></li>
+<li><strong>Parameter:</strong> A numerical characteristic of a <em>population</em> (e.g., the true average height of all Amrita students). Parameters are usually unknown and are what we often want to estimate.</li>
+<li><strong>Statistic:</strong> A numerical characteristic of a <em>sample</em> (e.g., the average height of the 500 sampled Amrita students). We use statistics to estimate population parameters.</li>
+</ul>
+<section id="sampling-techniques-brief-overview" class="level4">
+<h4 class="anchored" data-anchor-id="sampling-techniques-brief-overview">Sampling Techniques (Brief Overview)</h4>
+<p>The way a sample is selected is crucial for its representativeness of the population. Some popular sampling techniques are given below.</p>
+<ul>
+<li><strong>Simple Random Sampling:</strong> Every member of the population has an equal chance of being selected, and every possible sample of a given size has an equal chance of being selected.</li>
+<li><strong>Stratified Sampling:</strong> The population is divided into mutually exclusive subgroups (strata) based on some characteristic (e.g., department, gender). Then, a simple random sample is taken from each stratum. This ensures representation from all subgroups.</li>
+<li><strong>Cluster Sampling:</strong> The population is divided into clusters (often geographically). A random sample of clusters is selected, and then <em>all</em> members within the selected clusters are included in the sample (or a sample is taken from within the selected clusters).</li>
+</ul>
+</section>
+<section id="sample-means-and-sample-sizes" class="level4">
+<h4 class="anchored" data-anchor-id="sample-means-and-sample-sizes">Sample Means and Sample Sizes</h4>
+<ul>
+<li><strong>Sample Mean (x̄):</strong> The average of the data points in a sample. It is a statistic used to estimate the population mean (μ).</li>
+<li><strong>Sample Size (n):</strong> The number of observations in a sample. The size of the sample affects the reliability of the estimates. Generally, larger samples (if well-selected) provide more precise estimates of population parameters. Determining an appropriate sample size is an important consideration in statistical studies.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="descriptive-statistics-summarizing-data" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics-summarizing-data">Descriptive Statistics: Summarizing Data</h2>
+<p>Descriptive statistics are used to quantitatively describe or summarize the main features of a collection of information (a dataset).</p>
+<section id="types-of-data" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-data">Types of Data</h3>
+<p>Understanding the type of data you have is crucial for choosing appropriate descriptive statistics and visualizations.</p>
+<ul>
+<li><strong>Categorical Data (Qualitative):</strong> Represents characteristics or qualities.
+<ul>
+<li><strong>Nominal Data:</strong> Categories without a natural order or ranking (e.g., gender, color, city of birth).</li>
+<li><strong>Ordinal Data:</strong> Categories with a meaningful order or ranking, but the differences between categories may not be equal or quantifiable (e.g., education level: High School, Bachelor’s, Master’s, PhD; satisfaction rating: Very Dissatisfied, Dissatisfied, Neutral, Satisfied, Very Satisfied).</li>
+</ul></li>
+<li><strong>Numerical Data (Quantitative):</strong> Represents measurable quantities.
+<ul>
+<li><strong>Discrete Data:</strong> Can only take on specific, distinct values (often integers), usually a result of counting (e.g., number of students in a class, number of cars passing a point).</li>
+<li><strong>Continuous Data:</strong> Can take on any value within a given range, usually a result of measurement (e.g., height, weight, temperature, time).</li>
+</ul></li>
+</ul>
+</section>
+<section id="measures-of-central-tendency-finding-the-center-of-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="measures-of-central-tendency-finding-the-center-of-your-data">Measures of Central Tendency: Finding the “Center” of Your Data</h3>
+<p>Measures of central tendency are cornerstone descriptive statistics that help us pinpoint the “center,” “typical value,” or the point around which data tends to cluster. Identifying this central point is often the initial step in exploring a dataset and gaining meaningful insights. The selection of an appropriate measure is not arbitrary; it depends significantly on the <em>nature of the data</em> being analyzed—whether it’s categorical or numerical—and the <em>shape of its distribution</em>, particularly whether it’s symmetric or skewed. For aspiring data analysts, it is paramount not merely to learn the calculation of these measures but to deeply understand their contextual relevance, their strengths, and their inherent limitations.</p>
+<p><strong>The Mean (Arithmetic Average): The Balancing Point</strong></p>
+<p>The most commonly known measure of central tendency is the <em>mean</em>, often referred to as the arithmetic average. Conceptually, if you were to plot all your data points on a number line, each with equal weight, the mean would represent the physical balancing point of that number line. It is calculated by summing all the values in a dataset and then dividing by the total count of those values. For an entire population, the mean is denoted by <code>μ</code> (mu) and calculated as <span class="math inline">\(\mu=\dfrac{\sum X_i}{N}\)</span>, where <code>Xᵢ</code> is each population value and <code>N</code> is the population size. For a sample drawn from a population, the sample mean is denoted by <code>x̄</code> (x-bar) or sometimes <code>M</code>, and calculated as <span class="math inline">\(\bar{x}=\dfrac{\sum x_i}{n}\)</span>, where <code>xᵢ</code> is each sample value and <code>n</code> is the sample size.</p>
+<p>The mean is most appropriately used for <em>numerical data</em> (specifically, data measured on an interval or ratio scale) that exhibits a <em>symmetrical distribution</em>, such as the bell-shaped normal distribution. In such cases, the mean accurately reflects the center of the data. Furthermore, because it incorporates every data point in its calculation, it is a comprehensive measure and serves as a foundational element for many other important statistical calculations, including variance, standard deviation, and numerous inferential statistical tests.</p>
+<p>However, a critical consideration for data analysts is the mean’s high <em>sensitivity to outliers</em>, or extreme values. A single unusually large or small value can disproportionately influence the mean, pulling it towards the outlier and potentially misrepresenting the “typical” value of the dataset. Consider, for instance, a small dataset of salaries: [₹30,000, ₹35,000, ₹40,000, ₹45,000, ₹500,000]. The calculated mean salary is ₹130,000. This figure, heavily skewed by the ₹500,000 outlier, doesn’t accurately represent the typical earnings within this group. It’s also important to note that calculating a mean for nominal categorical data (e.g., “average color”) is meaningless. While a mean <em>can</em> be computed for ordinal data if numerical codes are assigned, its interpretation must be approached with caution, as the intervals between ordinal categories are not necessarily uniform or quantitatively meaningful. <code>Python</code> implementation of this problem is here:</p>
+<div id="2505f9f5" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats <span class="co"># For mode</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>salaries <span class="op">=</span> np.array([<span class="dv">30000</span>, <span class="dv">35000</span>, <span class="dv">40000</span>, <span class="dv">45000</span>, <span class="dv">500000</span>])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Mean</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>mean_salary_manual <span class="op">=</span> <span class="bu">sum</span>(salaries) <span class="op">/</span> <span class="bu">len</span>(salaries)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>mean_salary_numpy <span class="op">=</span> np.mean(salaries)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Manually Calculated Mean Salary: ₹</span><span class="sc">{</span>mean_salary_manual<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"NumPy Calculated Mean Salary: ₹</span><span class="sc">{</span>mean_salary_numpy<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Manually Calculated Mean Salary: ₹130,000.00
+NumPy Calculated Mean Salary: ₹130,000.00</code></pre>
+</div>
+</div>
+<p>As seen, the mean salary is ₹130,000.00, heavily influenced by the outlier. The mean is best suited for numerical data that is symmetrically distributed. Its high sensitivity to outliers is a critical consideration.</p>
+<p><strong>The Median: The Middle Ground</strong></p>
+<p>When data is skewed or contains significant outliers, the <em>median</em> often provides a more robust and representative measure of central tendency. The median is defined as the middle value in a dataset that has been arranged in ascending or descending order. It effectively divides the dataset into two equal halves, with 50% of the data points falling below it and 50% above.</p>
+<p>To calculate the median, the first step is always to sort the data. If the dataset contains an odd number of observations (<code>n</code>), the median is simply the value at the <code>(n+1)/2</code> position in the sorted list. If <code>n</code> is even, the median is the average of the two middle values, specifically the values at the <code>n/2</code> position and the <code>(n/2)+1</code> position. <code>Python</code> code to calculate median of the previous example is given below.</p>
+<div id="e28a9d20" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Median for the salaries</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>median_salary_numpy <span class="op">=</span> np.median(salaries)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"NumPy Calculated Median Salary: ₹</span><span class="sc">{</span>median_salary_numpy<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>NumPy Calculated Median Salary: ₹40,000.00</code></pre>
+</div>
+</div>
+<p>The primary strength of the median lies in its <em>robustness to outliers</em>. Unlike the mean, extreme values have little to no impact on the median. Revisiting our salary example [₹30,000, ₹35,000, ₹40,000, ₹45,000, ₹500,000], the median salary is ₹40,000. This value is clearly a more accurate reflection of the typical salary in this dataset than the mean of ₹130,000. This makes the median an ideal choice for skewed numerical datasets. It is also a suitable measure for ordinal data, allowing us, for instance, to find a median satisfaction rating. However, one should be aware that the median does not utilize all the data values in its calculation—it primarily depends on the value(s) in the middle. While this contributes to its robustness, it also means that it is sometimes less mathematically tractable for certain advanced statistical procedures where the properties of the mean are preferred. The interpretation of the median is straightforward: “Half the data points are below this value, and half are above.”</p>
+<p><strong>The Mode: The Most Frequent</strong></p>
+<p>The <em>mode</em> offers a different perspective on central tendency by identifying the value or category that appears most frequently within a dataset. To find the mode, one simply counts the occurrences of each unique value or category; the one with the highest frequency is designated as the mode. A dataset might present with <strong>no mode</strong> if all values occur with equal frequency. It can be <em>unimodal</em> (having one mode), <em>bimodal</em> (having two modes, if two distinct values share the highest frequency), or even <em>multimodal</em> (having more than two modes).</p>
+<p>A significant advantage of the mode is that it is the <em>only</em> measure of central tendency appropriate for <em>nominal categorical data</em>. For example, in a dataset of car sales, the mode would tell us the most commonly sold car color. The mode can also be applied to ordinal and numerical data (both discrete and continuous, though for continuous data, values are often grouped into intervals or bins first to determine a modal class). Like the median, the mode is <em>not affected by outliers</em>. However, it’s important to recognize that the mode may not always be unique, or in some datasets, it might not exist at all, which can limit its utility as a sole summary statistic. In distributions that are heavily skewed, the mode might be located at one end and may not be a good indicator of the overall central location of the data. Nevertheless, in multimodal distributions, the modes are valuable for highlighting multiple points of concentration or peaks within the data.</p>
+<p>A <code>Python</code> example to find the mode of a data is given below:</p>
+<div id="a9d7ef6b" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example for Mode</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data_for_mode <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mode_scipy <span class="op">=</span> stats.mode(data_for_mode, keepdims<span class="op">=</span><span class="va">False</span>) <span class="co"># keepdims=False for cleaner output in newer SciPy</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Data for mode: </span><span class="sc">{</span>data_for_mode<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mode (SciPy): </span><span class="sc">{</span>mode_scipy<span class="sc">.</span>mode<span class="sc">}</span><span class="ss">, Count: </span><span class="sc">{</span>mode_scipy<span class="sc">.</span>count<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data for mode: [1, 2, 2, 3, 3, 3, 4, 5, 5]
+Mode (SciPy): 3, Count: 3</code></pre>
+</div>
+</div>
+<div id="57094a1c" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For multiple modes or categorical data, Pandas is often easier</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>categorical_data <span class="op">=</span> pd.Series([<span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'apple'</span>, <span class="st">'orange'</span>, <span class="st">'banana'</span>, <span class="st">'apple'</span>])</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mode_pandas_categorical <span class="op">=</span> categorical_data.mode()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Categorical Data: </span><span class="sc">{</span><span class="bu">list</span>(categorical_data)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mode(s) (Pandas):</span><span class="ch">\n</span><span class="sc">{</span>mode_pandas_categorical<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Categorical Data: ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']
+Mode(s) (Pandas):
+0    apple
+dtype: object</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Choosing the Right Measure: A Data Analyst’s Perspective
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As a data analyst, selecting a single measure of central tendency in isolation is rarely sufficient. A more insightful approach involves considering these measures collectively to build a comprehensive understanding of the data’s central location and distribution.</p>
+<p>When dealing with a <em>symmetrically distributed</em> dataset, such as data that approximates a normal (bell-shaped) curve, the mean, median, and mode will typically be very close to each other, often nearly identical. In such scenarios, the mean is often the preferred measure due to its desirable mathematical properties that facilitate further statistical analysis.</p>
+<p>However, the situation changes with <em>skewed distributions</em>. In a <em>positively skewed</em> (or right-skewed) distribution, where the tail extends towards the higher values, the presence of high-value outliers tends to pull the mean upwards. Consequently, the relationship is generally <code>Mean &gt; Median &gt; Mode</code>. Here, the median is usually a more faithful representative of the central tendency than the mean. Conversely, in a <em>negatively skewed</em> (or left-skewed) distribution, where the tail extends towards lower values, low-value outliers pull the mean downwards, resulting in a typical relationship of <code>Mean &lt; Median &lt; Mode</code>. Again, the median often provides a more reliable indication of the center.</p>
+<p>For <em>categorical data</em>, the choices are more constrained. For nominal data, only the mode is meaningful. For ordinal data, both the median and the mode are appropriate and can provide useful insights. While a mean can be calculated for ordinal data if numerical codes are assigned, its interpretation requires careful consideration of whether the intervals between categories are truly equal and meaningful.</p>
+<p>The presence of <em>outliers</em> is a critical flag for any data analyst. If outliers are suspected in numerical data, it is always advisable to calculate both the mean and the median. A substantial difference between these two values is a strong indicator of either a skewed distribution or the significant influence of extreme values. Such observations warrant further investigation into the nature and cause of these outliers.</p>
+</div>
+</div>
+<p>Consider a practical scenario in e-commerce data analytics. Suppose an analysis of customer purchase amounts reveals a <em>mean</em> purchase amount of $150, a <em>median</em> purchase amount of $60, and a <em>modal</em> purchase amount (when grouped into $10 bins) in the $40-$50 range. This combination of measures tells a story: the distribution of purchase amounts is likely <em>positively skewed</em>. The mean ($150) being considerably higher than the median ($60) suggests that a subset of customers is making very large purchases, thereby inflating the average. The <em>median ($60)</em> offers a better representation of what a “typical” customer spends – half of the customers spend less than $60, and half spend more. The <em>mode ($40-$50)</em> highlights the most frequent range of purchase amounts. An analyst would communicate these findings by emphasizing the median as the typical expenditure while also noting the higher mean, which underscores the importance of high-value customers. This would naturally lead to further investigation into the characteristics and behaviors of these high-spending customers. A histogram of the purchase data would visually confirm the observed skewness. We will discuss the concept of skewness more detail in the coming sections.</p>
+</section>
+<section id="measures-of-dispersion-variability-quantifying-the-spread-of-data" class="level3">
+<h3 class="anchored" data-anchor-id="measures-of-dispersion-variability-quantifying-the-spread-of-data">Measures of Dispersion (Variability): Quantifying the Spread of Data</h3>
+<p>While measures of central tendency provide a snapshot of the “typical” value in a dataset, they do not tell the whole story. Two datasets can have the same mean or median yet look vastly different in terms of how their data points are scattered. <em>Measures of dispersion</em>, also known as measures of variability or spread, quantify the extent to which data points in a dataset deviate from the central tendency or from each other. Understanding dispersion is crucial for assessing the consistency, reliability, and distribution pattern of data.</p>
+<ol type="1">
+<li><strong>The Range:</strong>- A Simplistic View of Spread</li>
+</ol>
+<p>The <em>range</em> is the simplest measure of dispersion, calculated merely as the difference between the maximum and minimum values in a dataset: <code>Range = Maximum Value - Minimum Value</code>. While straightforward to compute, its utility is limited because it only considers the two most extreme data points. Consequently, the range is highly <em>sensitive to outliers</em>. A single unusually high or low value can dramatically inflate the range, providing a potentially misleading picture of the overall variability of the majority of the data. For instance, in our salary example [₹30k, ₹35k, ₹40k, ₹45k, ₹500k], the range is ₹470k, largely driven by the single outlier. If the outlier were absent, the range would be much smaller (₹15k). Thus, while the range gives a quick sense of the total span of the data, it is generally not a robust measure of dispersion. A <code>Python</code> example is given below:</p>
+<div id="14ce5f6e" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Range for salaries</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>range_salaries <span class="op">=</span> np.ptp(salaries) <span class="co"># ptp stands for "peak to peak"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively: np.max(salaries) - np.min(salaries)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Salaries: </span><span class="sc">{</span>salaries<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Range of Salaries: ₹</span><span class="sc">{</span>range_salaries<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Salaries: [ 30000  35000  40000  45000 500000]
+Range of Salaries: ₹470,000.00</code></pre>
+</div>
+</div>
+<p>The range for our salary example is ₹470,000.00, largely driven by the outlier. It’s simple but highly sensitive to outliers.</p>
+<ol start="2" type="1">
+<li><strong>Variance:</strong>- The Average Squared Deviation</li>
+</ol>
+<p>A more sophisticated and widely used measure of dispersion is <em>variance</em>. Variance quantifies the average of the squared differences of each data point from the mean of the dataset. Squaring the differences serves two purposes: it prevents negative and positive deviations from canceling each other out, and it emphasizes larger deviations more heavily.</p>
+<p>For an entire population, the variance (<code>σ²</code>, sigma-squared) is calculated as: <span class="math inline">\(\sigma^2=\dfrac{\sum(X_i-\mu)^2}{N}\)</span>, where <code>Xᵢ</code> is each population value, <code>μ</code> is the population mean, and <code>N</code> is the population size.</p>
+<p>When calculating variance from a sample to estimate the population variance, a slight modification is used for the sample variance (<code>s²</code>): <span class="math inline">\(s^2=\dfrac{\sum(x_i-\bar{x})^2}{n-1}\)</span>. Here, <code>xᵢ</code> is each sample value, <code>x̄</code> is the sample mean, and <code>n</code> is the sample size. The use of <code>(n - 1)</code> in the denominator, known as Bessel’s correction, provides an unbiased estimate of the population variance from the sample data. A <code>python</code> example to find variance of a data is given below:</p>
+<div id="97ae3677" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance for salaries (sample variance, ddof=1 by default in NumPy)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>variance_salaries_numpy <span class="op">=</span> np.var(salaries, ddof<span class="op">=</span><span class="dv">1</span>) <span class="co"># ddof=1 for sample variance</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sample Variance of Salaries (NumPy, ddof=1): </span><span class="sc">{</span>variance_salaries_numpy<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample Variance of Salaries (NumPy, ddof=1): 42,812,500,000.00</code></pre>
+</div>
+</div>
+<p>The units of variance are squared (e.g., (Rupees)²), making direct interpretation difficult.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretability issue of variance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The primary challenge with interpreting variance directly is that its units are the square of the original data units (e.g., if data is in meters, variance is in meters squared). This can make it less intuitive to relate back to the original scale of measurement. However, variance is a critical component in many statistical formulas and models.</p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>Standard Deviation:</strong>- An Interpretable Measure of Spread</li>
+</ol>
+<p>To overcome the unit interpretation issue of variance, we use the <em>standard deviation</em>. The standard deviation is simply the square root of the variance. It measures the typical or average amount by which data points deviate from the mean. The population standard deviation (<code>σ</code>, sigma) is <code>σ = √σ²</code>, and the sample standard deviation (<code>s</code>) is <code>s = √s²</code>.</p>
+<p>A simple <code>Python</code> example is here:</p>
+<div id="1744ccbc" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard Deviation for salaries (sample standard deviation)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>std_dev_salaries_numpy <span class="op">=</span> np.std(salaries, ddof<span class="op">=</span><span class="dv">1</span>) <span class="co"># ddof=1 for sample std</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sample Standard Deviation of Salaries (NumPy, ddof=1): ₹</span><span class="sc">{</span>std_dev_salaries_numpy<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample Standard Deviation of Salaries (NumPy, ddof=1): ₹206,911.82</code></pre>
+</div>
+</div>
+<p>A small standard deviation means data points are close to the mean; a large one means they are spread out.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Standard deviation over variance in statistical calculations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The standard deviation is expressed in the <em>same units as the original data</em>, making it much more interpretable. A small standard deviation indicates that the data points tend to be clustered closely around the mean, signifying low variability. Conversely, a large standard deviation suggests that the data points are spread out over a wider range of values, indicating high variability. For data that follows a normal distribution, the standard deviation has particularly useful properties (e.g., approximately 68% of data falls within one standard deviation of the mean, 95% within two, and 99.7% within three – the empirical rule).</p>
+</div>
+</div>
+<ol start="4" type="1">
+<li><strong>Interquartile Range (IQR):</strong>- A Robust Measure of Middle Spread</li>
+</ol>
+<p>Similar to how the median is a robust measure of central tendency, the <em>Interquartile Range (IQR)</em> is a robust measure of dispersion, meaning it is less affected by outliers. The IQR describes the spread of the middle 50% of the data. To understand IQR, we first need to understand quartiles.</p>
+<p><strong>Quartiles</strong> divide a sorted dataset into four equal parts, each containing 25% of the observations:</p>
+<ul>
+<li><p><em>Q1 (First Quartile or 25th Percentile):</em> The value below which 25% of the data falls.</p></li>
+<li><p><em>Q2 (Second Quartile or 50th Percentile):</em> This is simply the Median of the dataset.</p></li>
+<li><p><em>Q3 (Third Quartile or 75th Percentile):</em> The value below which 75% of the data falls.</p></li>
+</ul>
+<p>The <em>Interquartile Range</em> is then calculated as the difference between the third and first quartiles: <code>IQR = Q3 - Q1</code>.</p>
+<p>Because the IQR focuses on the central portion of the data distribution, it is not influenced by extreme values in the tails. This makes it a particularly useful measure of spread for skewed distributions or datasets known to contain outliers. The IQR is also instrumental in constructing box plots and in a common rule of thumb for identifying potential outliers: data points falling below <code>Q1 - 1.5 * IQR</code> or above <code>Q3 + 1.5 * IQR</code> are often flagged for further investigation.</p>
+<p>As a data analyst, you would choose measures of dispersion based on the data’s characteristics and your analytical goals. If your data is symmetric and free of significant outliers, the standard deviation provides a comprehensive measure. If the data is skewed or outliers are a concern, the IQR offers a more robust alternative for understanding the spread of the bulk of your data. Following <code>Python</code> code demonstrate the IQR calculation of the previously discussed salary data.</p>
+<div id="123db1e5" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IQR for salaries</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>q1_salaries <span class="op">=</span> np.percentile(salaries, <span class="dv">25</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>q3_salaries <span class="op">=</span> np.percentile(salaries, <span class="dv">75</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>iqr_salaries <span class="op">=</span> q3_salaries <span class="op">-</span> q1_salaries</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, using scipy.stats</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>iqr_scipy_salaries <span class="op">=</span> stats.iqr(salaries)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Q1 Salary: ₹</span><span class="sc">{</span>q1_salaries<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Q3 Salary: ₹</span><span class="sc">{</span>q3_salaries<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IQR of Salaries (Manual Percentile): ₹</span><span class="sc">{</span>iqr_salaries<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"IQR of Salaries (SciPy): ₹</span><span class="sc">{</span>iqr_scipy_salaries<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Q1 Salary: ₹35,000.00
+Q3 Salary: ₹45,000.00
+IQR of Salaries (Manual Percentile): ₹10,000.00
+IQR of Salaries (SciPy): ₹10,000.00</code></pre>
+</div>
+</div>
+</section>
+<section id="covariance-measuring-joint-variability" class="level3">
+<h3 class="anchored" data-anchor-id="covariance-measuring-joint-variability">Covariance: Measuring Joint Variability</h3>
+<p>Thus far, we have focused on describing single variables (univariate analysis). However, data analysts are often interested in understanding the relationships <em>between</em> two or more variables (bivariate or multivariate analysis). <em>Covariance</em> is a statistical measure that describes the direction of the linear relationship between two numerical variables. It quantifies how two variables change together.</p>
+<p>If two variables tend to increase or decrease together, their covariance will be positive. For example, we might expect a positive covariance between study hours and exam scores. If one variable tends to increase while the other decreases, their covariance will be negative. For instance, the covariance between temperature and sales of hot chocolate might be negative. If there is no discernible linear tendency for the variables to move together, their covariance will be close to zero.</p>
+<p>The sample covariance between two variables, X and Y, is calculated as: <span class="math inline">\(Cov(X,Y)=\dfrac{\sum (x_i-\bar{x})(y_i-\bar{y})}{n-1}\)</span> , where <code>xᵢ</code> and <code>yᵢ</code> are individual paired observations, <code>x̄</code> and <code>ȳ</code> are their respective sample means, and <code>n</code> is the number of pairs. Each term <span class="math inline">\((x_i-\bar{x})(y_i-\bar{y})\)</span> will be positive if both <code>xᵢ</code> and <code>yᵢ</code> are above their means or both are below their means. It will be negative if one is above its mean and the other is below. Summing these products gives an overall sense of the joint deviation.</p>
+<p>While covariance indicates the direction of the relationship, a significant limitation is that its <em>magnitude is not standardized</em> and depends on the units of measurement of the variables. For example, the covariance between height (in cm) and weight (in kg) will be different from the covariance between height (in meters) and weight (in pounds), even if the underlying relationship is the same. This makes it difficult to compare the strength of relationships across different pairs of variables using covariance alone. To address this, a standardized version called the correlation coefficient (which we will discuss later) is often preferred for assessing the strength and direction of a linear relationship.</p>
+<p>As a simple example, consider the context of study hours and exam score for 5 students given below. Examine whether there exist a positive correlation between the number of hours studied and exam score.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>study_hours <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>])</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>exam_scores <span class="op">=</span> np.array([<span class="dv">65</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">60</span>, <span class="dv">75</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>Python</code> code to solve this problem is given below:</p>
+<div id="ce7f3a59" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>study_hours <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>])</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>exam_scores <span class="op">=</span> np.array([<span class="dv">65</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">60</span>, <span class="dv">75</span>])</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Covariance matrix</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The diagonal elements are variances of each variable.</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Off-diagonal elements are covariances between pairs of variables.</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>covariance_matrix <span class="op">=</span> np.cov(study_hours, exam_scores) <span class="co"># Rowvar=True by default</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># covariance_matrix[0, 1] is Cov(study_hours, exam_scores)</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Study Hours:"</span>, study_hours)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Exam Scores:"</span>, exam_scores)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Covariance Matrix:"</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(covariance_matrix)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Cov(Study Hours, Exam Scores): </span><span class="sc">{</span>covariance_matrix[<span class="dv">0</span>, <span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Study Hours: [2 3 5 1 4]
+Exam Scores: [65 70 85 60 75]
+
+Covariance Matrix:
+[[ 2.5 15. ]
+ [15.  92.5]]
+
+Cov(Study Hours, Exam Scores): 15.00</code></pre>
+</div>
+</div>
+<p>A positive covariance (like 15.00 here) suggests that as study hours increase, exam scores tend to increase. However, the magnitude is not standardized and depends on the units.</p>
+</section>
+<section id="skewness-and-kurtosis-describing-the-shape-of-a-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="skewness-and-kurtosis-describing-the-shape-of-a-distribution">Skewness and Kurtosis: Describing the Shape of a Distribution</h3>
+<p>Beyond central tendency and dispersion, the overall <strong>shape</strong> of a data distribution provides valuable insights. Two important measures that describe shape are skewness and kurtosis.</p>
+<p><strong>Skewness: Measuring Asymmetry</strong></p>
+<p><em>Skewness</em> is a measure of the asymmetry of a probability distribution of a real-valued random variable around its mean. In simpler terms, it tells us if the distribution is lopsided or symmetric. * A distribution with <em>zero skewness</em> (or a skewness value very close to zero) is perfectly symmetric. For such distributions, like the normal distribution, the mean, median, and mode are typically equal or very close. * A <em>positively skewed</em> (or right-skewed) distribution has a longer or fatter tail on its right side. This indicates that there are some unusually high values pulling the mean to the right. In such distributions, the general relationship is <code>Mean &gt; Median &gt; Mode</code>. * A <em>negatively skewed</em> (or left-skewed) distribution has a longer or fatter tail on its left side, indicating the presence of unusually low values pulling the mean to the left. Here, the typical relationship is <code>Mean &lt; Median &lt; Mode</code>.</p>
+<div id="fig-skewness" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-skewness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A["Symmetric (Skewness ≈ 0)"] --&gt; B["Normal Curve"]
+  C["Positive Skew (Right Skew)"] --&gt; D["Curve Skewed Right"]
+  E["Negative Skew (Left Skew)"] --&gt; F["Curve Skewed Left"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-skewness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Skewness and Normal curve
+</figcaption>
+</figure>
+</div>
+<p>Understanding skewness is crucial for data analysts because it affects the choice of appropriate statistical models and tests. Many statistical techniques assume a symmetric (often normal) distribution, and significant skewness might require data transformations or the use of non-parametric methods.</p>
+<p><strong>Kurtosis: Measuring “Tailedness” and “Peakedness”</strong></p>
+<p><em>Kurtosis</em> measures the “tailedness” or “peakedness” of a probability distribution relative to a normal distribution. It describes the concentration of data in the tails and around the peak. The kurtosis of a standard normal distribution is 3. Often, “excess kurtosis” is reported, which is <code>Kurtosis - 3</code>. * <em>Leptokurtic distributions (positive excess kurtosis, &gt; 0):</em> These distributions have a sharper peak and heavier (fatter) tails than a normal distribution. This implies that extreme values (outliers) are more likely to occur compared to a normal distribution. More of the variance is due to these infrequent extreme deviations. * <em>Mesokurtic distributions (excess kurtosis ≈ 0):</em> These have a similar degree of peakedness and tailedness as a normal distribution. * <em>Platykurtic distributions (negative excess kurtosis, &lt; 0):</em> These distributions are flatter and have thinner tails than a normal distribution. Extreme values are less likely. The variance is more due to frequent, modestly sized deviations.</p>
+<p>Kurtosis helps analysts understand the risk of outliers in a dataset. A high kurtosis suggests that the data has a higher propensity for producing extreme values, which can be critical in fields like finance (risk management) or quality control. <code>Python</code> code to find the skewness and kurtosis of the previous salary data is here:</p>
+<div id="7b1ad28e" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Skewness and Kurtosis for salaries</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: SciPy's kurtosis calculates "excess kurtosis" by default (fisher=True)</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>skewness_salaries <span class="op">=</span> stats.skew(salaries)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>kurtosis_salaries <span class="op">=</span> stats.kurtosis(salaries, fisher<span class="op">=</span><span class="va">True</span>) <span class="co"># Fisher=True for excess kurtosis</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Salaries Data: </span><span class="sc">{</span>salaries<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Skewness of Salaries: </span><span class="sc">{</span>skewness_salaries<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Excess Kurtosis of Salaries: </span><span class="sc">{</span>kurtosis_salaries<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Salaries Data: [ 30000  35000  40000  45000 500000]
+Skewness of Salaries: 1.50
+Excess Kurtosis of Salaries: 0.25</code></pre>
+</div>
+</div>
+<p>Another demonstration of skewness and kurtosis of a symmetric data is given below.</p>
+<div id="fca1e37f" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of a more symmetric dataset</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>symmetric_data <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>skewness_symmetric <span class="op">=</span> stats.skew(symmetric_data)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>kurtosis_symmetric <span class="op">=</span> stats.kurtosis(symmetric_data)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Symmetric Data Example: </span><span class="sc">{</span>symmetric_data<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Skewness of Symmetric Data: </span><span class="sc">{</span>skewness_symmetric<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Excess Kurtosis of Symmetric Data: </span><span class="sc">{</span>kurtosis_symmetric<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Symmetric Data Example: [ 1  2  3  4  5  6  7  8  9 10  4  5  6  7  5  6]
+Skewness of Symmetric Data: 0.00
+Excess Kurtosis of Symmetric Data: -0.48</code></pre>
+</div>
+</div>
+</section>
+<section id="visualizing-distribution-key-points-using-a-box-plot" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-distribution-key-points-using-a-box-plot">Visualizing distribution key points using a Box plot</h3>
+<p>A concise and effective way to summarize the distribution of numerical data is through the <strong>five-point summary</strong>. This summary consists of five key statistical values:</p>
+<ol type="1">
+<li><em>Minimum:</em> The smallest value in the dataset.</li>
+<li><em>First Quartile (Q1):</em> The 25th percentile.</li>
+<li><em>Median (Q2):</em> The 50th percentile.</li>
+<li><em>Third Quartile (Q3):</em> The 75th percentile.</li>
+<li><em>Maximum:</em> The largest value in the dataset.</li>
+</ol>
+<p>This summary provides a quick understanding of the range, central tendency (median), and spread of the inner 50% of the data (IQR = Q3 - Q1).</p>
+<p>The <em>Box Plot</em> (also known as a box-and-whisker plot) is a standardized graphical representation of the five-point summary, offering a powerful visual tool for data analysis. A typical box plot displays:</p>
+<ul>
+<li>A rectangular <em>“box”</em> that extends from the first quartile (Q1) to the third quartile (Q3). The length of this box represents the Interquartile Range (IQR).</li>
+<li>A <em>line inside the box</em> that marks the median (Q2).</li>
+<li><em>“Whiskers”</em> that extend from the ends of the box. The traditional method for drawing whiskers is to extend them to the minimum and maximum data values <em>within</em> a range of 1.5 times the IQR from the quartiles (i.e., from Q1 - 1.5<em>IQR to Q3 + 1.5</em>IQR).</li>
+<li>Data points that fall <em>outside these whiskers</em> are often plotted individually as dots or asterisks and are considered potential <em>outliers</em>.</li>
+</ul>
+<p>Box plots are exceptionally useful for several reasons:</p>
+<ul>
+<li>They clearly show the <em>median, IQR, and overall range</em> of the data.</li>
+<li>They provide a visual indication of the data’s <em>symmetry or skewness</em>. If the median is not centered in the box, or if one whisker is much longer than the other, it suggests skewness.</li>
+<li>They are very effective for <em>identifying potential outliers</em>.</li>
+<li>They allow for easy <em>comparison of distributions across multiple groups</em> when plotted side-by-side.</li>
+</ul>
+<p>The five point summary of the previous salary data is visualized with a box-plot in <code>Python</code> code.</p>
+<div id="a65fd774" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Five-point summary for salaries using NumPy percentiles</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>min_sal <span class="op">=</span> np.<span class="bu">min</span>(salaries)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>q1_sal <span class="op">=</span> np.percentile(salaries, <span class="dv">25</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>median_sal <span class="op">=</span> np.median(salaries)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>q3_sal <span class="op">=</span> np.percentile(salaries, <span class="dv">75</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>max_sal <span class="op">=</span> np.<span class="bu">max</span>(salaries)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Five-Point Summary for Salaries:"</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Minimum: ₹</span><span class="sc">{</span>min_sal<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Q1 (25th Percentile): ₹</span><span class="sc">{</span>q1_sal<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Median (50th Percentile): ₹</span><span class="sc">{</span>median_sal<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Q3 (75th Percentile): ₹</span><span class="sc">{</span>q3_sal<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Maximum: ₹</span><span class="sc">{</span>max_sal<span class="sc">:,.2f}</span><span class="ss">"</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Pandas describe() also gives a similar summary</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>salaries_series <span class="op">=</span> pd.Series(salaries)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Pandas describe() output for Salaries:"</span>)</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries_series.describe().<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"₹</span><span class="sc">{</span>x<span class="sc">:,.2f}</span><span class="ss">"</span>))</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Box Plot for salaries</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>sns.boxplot(y<span class="op">=</span>salaries_series) <span class="co"># Using y for vertical boxplot with a Pandas Series</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Box Plot of Salaries'</span>)</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Salary (₹)'</span>)</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Five-Point Summary for Salaries:
+  Minimum: ₹30,000.00
+  Q1 (25th Percentile): ₹35,000.00
+  Median (50th Percentile): ₹40,000.00
+  Q3 (75th Percentile): ₹45,000.00
+  Maximum: ₹500,000.00
+
+Pandas describe() output for Salaries:
+count          ₹5.00
+mean     ₹130,000.00
+std      ₹206,911.82
+min       ₹30,000.00
+25%       ₹35,000.00
+50%       ₹40,000.00
+75%       ₹45,000.00
+max      ₹500,000.00
+dtype: object</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="unit2_files/figure-html/cell-13-output-2.png" width="544" height="340" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>By utilizing these descriptive statistics—measures of central tendency, dispersion, shape, and their visual representations like box plots—data analysts can thoroughly explore and understand the fundamental characteristics of their datasets, laying a solid foundation for more advanced inferential analysis and modeling.</p>
+</section>
+</section>
+<section id="problems-and-python-solutions-in-descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="problems-and-python-solutions-in-descriptive-statistics">Problems and Python solutions in descriptive statistics</h2>
+<ol type="1">
+<li>Given the following dataset representing the scores of 10 students on a test: scores = [78, 85, 92, 65, 72, 88, 90, 78, 85, 80] Calculate and interpret the following for this dataset:</li>
+</ol>
+<ol type="a">
+<li>Mean, Median, Mode</li>
+<li>Range, Variance, Standard Deviation, IQR</li>
+<li>Skewness and Kurtosis</li>
+<li>Generate a five-point summary and a box plot.</li>
+</ol>
+<div id="0625a3c3" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.array([<span class="dv">78</span>, <span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">65</span>, <span class="dv">72</span>, <span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">85</span>, <span class="dv">80</span>])</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>scores_series <span class="op">=</span> pd.Series(scores) <span class="co"># Using Pandas Series for convenience with mode and describe</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dataset: Student Scores"</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(scores)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co"># a) Mean, Median, Mode</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>mean_scores <span class="op">=</span> np.mean(scores)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>median_scores <span class="op">=</span> np.median(scores)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>mode_scores <span class="op">=</span> stats.mode(scores, keepdims<span class="op">=</span><span class="va">False</span>).mode <span class="co"># Using SciPy stats for mode of NumPy array</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co"># For multiple modes or more robust mode finding with Pandas:</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="co"># mode_scores_pd = scores_series.mode()</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">a) Central Tendency:"</span>)</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Mean: </span><span class="sc">{</span>mean_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Median: </span><span class="sc">{</span>median_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Mode: </span><span class="sc">{</span>mode_scores<span class="sc">}</span><span class="ss">"</span>) <span class="co"># If multiple modes, SciPy returns the smallest</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a><span class="co"># print(f"  Mode (Pandas): {list(mode_scores_pd)}")</span></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="co"># b) Range, Variance, Standard Deviation, IQR</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>range_scores <span class="op">=</span> np.ptp(scores)</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>variance_scores <span class="op">=</span> np.var(scores, ddof<span class="op">=</span><span class="dv">1</span>) <span class="co"># Sample variance</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>std_dev_scores <span class="op">=</span> np.std(scores, ddof<span class="op">=</span><span class="dv">1</span>) <span class="co"># Sample standard deviation</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>q1_scores <span class="op">=</span> np.percentile(scores, <span class="dv">25</span>)</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>q3_scores <span class="op">=</span> np.percentile(scores, <span class="dv">75</span>)</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>iqr_scores <span class="op">=</span> q3_scores <span class="op">-</span> q1_scores</span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a><span class="co"># iqr_scores_scipy = stats.iqr(scores)</span></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">b) Dispersion:"</span>)</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Range: </span><span class="sc">{</span>range_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Variance (sample): </span><span class="sc">{</span>variance_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Standard Deviation (sample): </span><span class="sc">{</span>std_dev_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Q1: </span><span class="sc">{</span>q1_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Q3: </span><span class="sc">{</span>q3_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  IQR: </span><span class="sc">{</span>iqr_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="co"># c) Skewness and Kurtosis</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>skewness_scores <span class="op">=</span> stats.skew(scores)</span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>kurtosis_scores <span class="op">=</span> stats.kurtosis(scores, fisher<span class="op">=</span><span class="va">True</span>) <span class="co"># Excess kurtosis</span></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">c) Shape:"</span>)</span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Skewness: </span><span class="sc">{</span>skewness_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Excess Kurtosis: </span><span class="sc">{</span>kurtosis_scores<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="co"># d) Five-point summary and Box plot</span></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">d) Five-Point Summary (using Pandas describe()):"</span>)</span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Using .loc to select specific stats from describe() and format them</span></span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="op">=</span> scores_series.describe().loc[[<span class="st">'min'</span>, <span class="st">'25%'</span>, <span class="st">'50%'</span>, <span class="st">'75%'</span>, <span class="st">'max'</span>]]</span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary_stats.rename(index<span class="op">=</span>{<span class="st">'min'</span>: <span class="st">'Minimum'</span>, <span class="st">'25%'</span>: <span class="st">'Q1'</span>, <span class="st">'50%'</span>: <span class="st">'Median'</span>, <span class="st">'75%'</span>: <span class="st">'Q3'</span>, <span class="st">'max'</span>: <span class="st">'Maximum'</span>}))</span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>scores_series) <span class="co"># Can directly pass Pandas Series</span></span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Box Plot of Student Scores'</span>)</span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Scores'</span>)</span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dataset: Student Scores
+[78 85 92 65 72 88 90 78 85 80]
+
+a) Central Tendency:
+  Mean: 81.30
+  Median: 82.50
+  Mode: 78
+
+b) Dispersion:
+  Range: 27.00
+  Variance (sample): 70.90
+  Standard Deviation (sample): 8.42
+  Q1: 78.00
+  Q3: 87.25
+  IQR: 9.25
+
+c) Shape:
+  Skewness: -0.57
+  Excess Kurtosis: -0.56
+
+d) Five-Point Summary (using Pandas describe()):
+Minimum    65.00
+Q1         78.00
+Median     82.50
+Q3         87.25
+Maximum    92.00
+dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="unit2_files/figure-html/cell-14-output-2.png" width="510" height="340" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Two brands of light bulbs, Brand A and Brand B, were tested for their lifespan in hours. The results are: brand_A_lifespan = [1200, 1250, 1300, 1100, 1150, 1220, 1280, 1180] brand_B_lifespan = [1000, 1500, 1100, 1400, 1050, 1450, 900, 1600]</li>
+</ol>
+<ol type="a">
+<li>Calculate the mean and median lifespan for each brand.</li>
+<li>Calculate the standard deviation for each brand.</li>
+<li>Which brand appears more consistent in its lifespan based on these statistics?</li>
+<li>Generate side-by-side box plots to visually compare their distributions.</li>
+</ol>
+<div id="05960d20" class="cell" data-execution_count="14">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>brand_A_lifespan <span class="op">=</span> np.array([<span class="dv">1200</span>, <span class="dv">1250</span>, <span class="dv">1300</span>, <span class="dv">1100</span>, <span class="dv">1150</span>, <span class="dv">1220</span>, <span class="dv">1280</span>, <span class="dv">1180</span>])</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>brand_B_lifespan <span class="op">=</span> np.array([<span class="dv">1000</span>, <span class="dv">1500</span>, <span class="dv">1100</span>, <span class="dv">1400</span>, <span class="dv">1050</span>, <span class="dv">1450</span>, <span class="dv">900</span>, <span class="dv">1600</span>])</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># a) Mean and Median</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>mean_A <span class="op">=</span> np.mean(brand_A_lifespan)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>median_A <span class="op">=</span> np.median(brand_A_lifespan)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>mean_B <span class="op">=</span> np.mean(brand_B_lifespan)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>median_B <span class="op">=</span> np.median(brand_B_lifespan)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Brand A Lifespan (hours):"</span>, brand_A_lifespan)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Brand B Lifespan (hours):"</span>, brand_B_lifespan)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">a) Central Tendency:"</span>)</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Brand A - Mean: </span><span class="sc">{</span>mean_A<span class="sc">:.2f}</span><span class="ss">, Median: </span><span class="sc">{</span>median_A<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Brand B - Mean: </span><span class="sc">{</span>mean_B<span class="sc">:.2f}</span><span class="ss">, Median: </span><span class="sc">{</span>median_B<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="co"># b) Standard Deviation</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>std_A <span class="op">=</span> np.std(brand_A_lifespan, ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>std_B <span class="op">=</span> np.std(brand_B_lifespan, ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">b) Dispersion (Standard Deviation):"</span>)</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Brand A - Std Dev: </span><span class="sc">{</span>std_A<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Brand B - Std Dev: </span><span class="sc">{</span>std_B<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a><span class="co"># c) Consistency</span></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Lower standard deviation implies more consistency</span></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>consistency_statement <span class="op">=</span> <span class="st">"Brand A"</span> <span class="cf">if</span> std_A <span class="op">&lt;</span> std_B <span class="cf">else</span> <span class="st">"Brand B"</span></span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> std_A <span class="op">==</span> std_B: consistency_statement <span class="op">=</span> <span class="st">"Both brands have similar consistency"</span></span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">c) Consistency:"</span>)</span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>consistency_statement<span class="sc">}</span><span class="ss"> appears more consistent in its lifespan."</span>)</span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a><span class="co"># d) Side-by-side Box Plots</span></span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a><span class="co"># To use Seaborn for side-by-side plots, it's easier if data is in a "long" format DataFrame</span></span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a>df_A <span class="op">=</span> pd.DataFrame({<span class="st">'Lifespan'</span>: brand_A_lifespan, <span class="st">'Brand'</span>: <span class="st">'Brand A'</span>})</span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a>df_B <span class="op">=</span> pd.DataFrame({<span class="st">'Lifespan'</span>: brand_B_lifespan, <span class="st">'Brand'</span>: <span class="st">'Brand B'</span>})</span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>df_lifespans <span class="op">=</span> pd.concat([df_A, df_B])</span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'Brand'</span>, y<span class="op">=</span><span class="st">'Lifespan'</span>, data<span class="op">=</span>df_lifespans)</span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Comparison of Light Bulb Lifespans'</span>)</span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Lifespan (hours)'</span>)</span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Brand A Lifespan (hours): [1200 1250 1300 1100 1150 1220 1280 1180]
+Brand B Lifespan (hours): [1000 1500 1100 1400 1050 1450  900 1600]
+
+a) Central Tendency:
+  Brand A - Mean: 1210.00, Median: 1210.00
+  Brand B - Mean: 1250.00, Median: 1250.00
+
+b) Dispersion (Standard Deviation):
+  Brand A - Std Dev: 66.98
+  Brand B - Std Dev: 265.92
+
+c) Consistency:
+  Brand A appears more consistent in its lifespan.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="unit2_files/figure-html/cell-15-output-2.png" width="676" height="523" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="unit-overview" class="level2">
+<h2 class="anchored" data-anchor-id="unit-overview">Unit overview</h2>
+<ol type="1">
+<li>Define an “AI agent” according to Russell and Norvig. What are its essential components (sensors and actuators)? Provide one example of a software agent and identify its sensors and actuators.</li>
+<li>Explain the PEAS framework for describing the task environment of an AI agent. Using a specific example (e.g., a medical diagnosis system or a spam filter), define its PEAS characteristics.</li>
+<li>What does it mean for an AI agent to be “rational”? Is rationality the same as omniscience or “perfect” action? Explain with an example.</li>
+<li>Compare and contrast a “fully observable” environment with a “partially observable” environment. Provide a clear example for each and explain why this distinction is crucial for agent design.</li>
+<li>Explain the difference between a “deterministic” and a “stochastic” environment. How does operating in a stochastic environment impact the complexity of an AI agent’s decision-making process?</li>
+<li>Distinguish between “episodic” and “sequential” task environments. For which type of environment is long-term planning more critical for an agent? Justify with examples.</li>
+<li>Describe the characteristics of a “dynamic” environment. What challenges does a dynamic environment pose for an AI agent compared to a static one?</li>
+<li>What are the key differences in the decision-making process between a “Simple Reflex Agent” and a “Model-based Reflex Agent”? When would a model-based approach be necessary?</li>
+<li>Explain the primary motivation for developing “Goal-based Agents.” How do they represent an advancement over reflex-based agents in terms of flexibility and foresight?</li>
+<li>What is a “Utility-based Agent,” and how does its utility function help in making decisions, especially in situations with conflicting goals or uncertain outcomes? Provide a scenario where a utility-based approach would be superior to a purely goal-based one.</li>
+<li>Briefly describe the main components of a “Learning Agent” (Learning Element, Performance Element, Critic, Problem Generator). How do these components enable an agent to improve its performance over time?</li>
+<li>Define “population” and “sample” in the context of statistics. Why do data scientists often work with samples rather than entire populations?</li>
+<li>Explain the difference between a “parameter” and a “statistic.” Provide an example of each.</li>
+<li>Name two different sampling techniques and briefly describe how one of them works. Why is the choice of sampling technique important for drawing valid inferences in Data Science?</li>
+<li>Calculate the mean, median, and mode for the following dataset of ages: <code>[22, 25, 21, 30, 25, 28, 45, 25]</code>. Which measure of central tendency would be most appropriate if you wanted to represent the “typical” age while being mindful of potential outliers? Justify.</li>
+<li>For the dataset <code>[10, 15, 12, 18, 25, 12, 16]</code>, calculate the range and the sample standard deviation. What does the standard deviation tell you about the spread of this data?</li>
+<li>What is the Interquartile Range (IQR)? Explain how it is calculated and why it is considered a robust measure of dispersion.</li>
+<li>Define “skewness” in the context of a data distribution. Describe what positive (right) skewness indicates about the relationship between the mean, median, and mode.</li>
+<li>Briefly explain what “covariance” measures between two variables. If the covariance between variable X (hours studied) and variable Y (exam score) is positive, what does this suggest about their relationship?</li>
+<li>What is a five-point summary of a dataset? How does a box plot visually represent this summary and help in identifying potential outliers?</li>
+</ol>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-russell2016artificial" class="csl-entry" role="listitem">
+Russell, Stuart J, and Peter Norvig. 2016. <em>Artificial Intelligence: A Modern Approach</em>. pearson.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

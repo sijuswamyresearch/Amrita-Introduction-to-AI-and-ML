@@ -1,0 +1,53 @@
+# Preface {.unnumbered}
+
+## Welcome to Introduction to AI and Machine Learning (23AID205)
+
+Welcome to 23AID205: Introduction to AI and Machine Learning! This course is designed to be your foundational gateway into the exciting and rapidly evolving fields of Artificial Intelligence (AI) and Data Science (DS). In an era where data is ubiquitous and intelligent systems are transforming industries, a solid understanding of these domains is becoming increasingly crucial for aspiring engineers and technologists.
+
+This course material has been structured to provide you with a formal introduction, balancing theoretical with practical, hands-on experience. We aim to demystify complex concepts and equip you with the initial tools and techniques to start your journey in AI and Data Science.
+
+## Course Aims and Philosophy
+
+The primary objectives of this course are:
+
+*   To introduce the fundamental concepts, history, and scope of Artificial Intelligence.
+*   To introduce the core principles and lifecycle of Data Science, including foundational statistics.
+*   To familiarize you with essential tools and programming techniques used in AI and Data Science.
+
+Our teaching philosophy emphasizes a blend of theoretical lectures and practical lab sessions. The L-T-P-C structure of 2-0-2-3 reflects this, with dedicated hours for both conceptual understanding and applied problem-solving using industry-relevant programming languages and libraries.
+
+## What You Will Learn
+
+Throughout this course, we will explore three core units:
+
+1.  **Foundations of AI & Data Science:** Delving into the history, core ideas, applications, and career landscapes of both AI and Data Science.
+2.  **Intelligent Agents & Introduction to Statistics:** Understanding the building blocks of AI systems through intelligent agents and their environments, and laying the statistical groundwork necessary for Data Science, covering concepts from sampling to descriptive statistics.
+3.  **Tools, Processes, and Applications:** Equipping you with basic tools (primarily Python and its ecosystem), introducing the Data Science process pipeline, exploring data representation and pre-processing, and touching upon elementary applications of AI and Data Science.
+
+You will gain hands-on experience with Python and key libraries such as NumPy for numerical operations, Pandas for data manipulation, Matplotlib/Seaborn for visualization, and a gentle introduction to Scikit-learn for basic machine learning tasks.
+
+## Learning Outcomes
+
+Upon successful completion of this course, you will be able to:
+
+*   **CO1:** Analyse different elements of an AI system.
+*   **CO2:** Analyse different types of data representation.
+*   **CO3:** Apply concepts of AI and Data Science to solve canonical problems.
+*   **CO4:** Implement basic computational tools pertinent to AI and Data Science to solve canonical problems.
+
+## Course Structure and Approach
+
+The course is structured around weekly lectures that introduce new concepts, followed by lab sessions designed to reinforce these concepts through practical exercises. Learning will be assessed through a combination of:
+
+*   **Assignments:** To apply learned concepts to specific problems.
+*   **Quizzes:** To check understanding of key topics periodically.
+*   **Mid-Term Examination:** To evaluate progress on the initial half of the course.
+*   **Term Project / End Semester Examination:** A significant component allowing you to apply your cumulative knowledge to a practical problem or a comprehensive theoretical assessment.
+
+## A Note to Students
+
+The study of AI and Data Science is an exciting endeavor. We encourage you to be curious, ask questions, actively participate in discussions, and diligently work through the lab exercises and assignments. The skills you develop in this course will serve as a strong foundation for more advanced topics and potentially for your future career.
+
+We hope you find this course engaging, challenging, and rewarding. Let's explore the fascinating world of AI and Data Science together!
+
+---

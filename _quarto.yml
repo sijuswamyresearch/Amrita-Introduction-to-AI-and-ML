@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: docs
+book:
+  title: "Introduction to AI and ML"
+  author: "Vipin Venugopal"
+  date: "5/6/2025"
+  search: true
+  repo-url: https://github.com/sijuswamy/Computational-Linear-Algebra
+  downloads: [pdf, epub]
+  sharing: [twitter, facebook]
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - unit1.qmd
+    - unit2.qmd
+    - unit3.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    jupyter: python3
+
+  pdf:
+    documentclass: scrreprt
+
+margin-header: |
+  ![Introduction to AI & ML](logo.png)

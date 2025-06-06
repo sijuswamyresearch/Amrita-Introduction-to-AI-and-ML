@@ -1,0 +1,11 @@
+## Introduction to the Course
+
+Welcome to Introduction to AI and Machine Learning. This course is your first step into understanding Artificial Intelligence and Data Science.
+
+We'll start by looking at what makes up an AI system. You'll learn to identify the different parts of AI, drawing on ideas from well-known texts like Russell and Norvig's *Artificial Intelligence: A Modern Approach* and Deepak Khemani's *A First Course in Artificial Intelligence*. This will help you analyze how these systems work (CO1).
+
+Then, we'll move into the world of data. You'll learn about different ways data is represented and how to make sense of it using basic statistics (CO2). We'll cover how to describe data and find simple patterns.
+
+A key part of the course is learning to apply these AI and Data Science ideas to common problems (CO3). You'll also get hands-on experience using basic computational tools, primarily Python and its libraries, to actually work with data and build simple solutions (CO4). Denis Rothman's *Artificial Intelligence by Example* will provide some practical illustrations for this.
+
+Throughout the course, we'll balance learning the theory with practical lab work. By the end, you should be comfortable analyzing basic AI systems and data, and be able to use fundamental tools to tackle introductory problems in these exciting fields.
