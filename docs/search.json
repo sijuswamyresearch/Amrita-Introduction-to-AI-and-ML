@@ -1,54 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Preface",
-    "section": "",
-    "text": "Welcome to 23AID205: Introduction to AI and Machine Learning! This course is designed to be your foundational gateway into the exciting and rapidly evolving fields of Artificial Intelligence (AI) and Data Science (DS). In an era where data is ubiquitous and intelligent systems are transforming industries, a solid understanding of these domains is becoming increasingly crucial for aspiring engineers and technologists.\nThis course material has been structured to provide you with a formal introduction, balancing theoretical with practical, hands-on experience. We aim to demystify complex concepts and equip you with the initial tools and techniques to start your journey in AI and Data Science.\n\n\n\nThe primary objectives of this course are:\n\nTo introduce the fundamental concepts, history, and scope of Artificial Intelligence.\nTo introduce the core principles and lifecycle of Data Science, including foundational statistics.\nTo familiarize you with essential tools and programming techniques used in AI and Data Science.\n\nOur teaching philosophy emphasizes a blend of theoretical lectures and practical lab sessions. The L-T-P-C structure of 2-0-2-3 reflects this, with dedicated hours for both conceptual understanding and applied problem-solving using industry-relevant programming languages and libraries.\n\n\n\nThroughout this course, we will explore three core units:\n\nFoundations of AI & Data Science: Delving into the history, core ideas, applications, and career landscapes of both AI and Data Science.\nIntelligent Agents & Introduction to Statistics: Understanding the building blocks of AI systems through intelligent agents and their environments, and laying the statistical groundwork necessary for Data Science, covering concepts from sampling to descriptive statistics.\nTools, Processes, and Applications: Equipping you with basic tools (primarily Python and its ecosystem), introducing the Data Science process pipeline, exploring data representation and pre-processing, and touching upon elementary applications of AI and Data Science.\n\nYou will gain hands-on experience with Python and key libraries such as NumPy for numerical operations, Pandas for data manipulation, Matplotlib/Seaborn for visualization, and a gentle introduction to Scikit-learn for basic machine learning tasks.\n\n\n\nUpon successful completion of this course, you will be able to:\n\nCO1: Analyse different elements of an AI system.\nCO2: Analyse different types of data representation.\nCO3: Apply concepts of AI and Data Science to solve canonical problems.\nCO4: Implement basic computational tools pertinent to AI and Data Science to solve canonical problems.\n\n\n\n\nThe course is structured around weekly lectures that introduce new concepts, followed by lab sessions designed to reinforce these concepts through practical exercises. Learning will be assessed through a combination of:\n\nAssignments: To apply learned concepts to specific problems.\nQuizzes: To check understanding of key topics periodically.\nMid-Term Examination: To evaluate progress on the initial half of the course.\nTerm Project / End Semester Examination: A significant component allowing you to apply your cumulative knowledge to a practical problem or a comprehensive theoretical assessment.\n\n\n\n\nThe study of AI and Data Science is an exciting endeavor. We encourage you to be curious, ask questions, actively participate in discussions, and diligently work through the lab exercises and assignments. The skills you develop in this course will serve as a strong foundation for more advanced topics and potentially for your future career.\nWe hope you find this course engaging, challenging, and rewarding. Let’s explore the fascinating world of AI and Data Science together!"
-  },
-  {
-    "objectID": "index.html#welcome-to-introduction-to-ai-and-machine-learning-23aid205",
-    "href": "index.html#welcome-to-introduction-to-ai-and-machine-learning-23aid205",
-    "title": "Preface",
-    "section": "",
-    "text": "Welcome to 23AID205: Introduction to AI and Machine Learning! This course is designed to be your foundational gateway into the exciting and rapidly evolving fields of Artificial Intelligence (AI) and Data Science (DS). In an era where data is ubiquitous and intelligent systems are transforming industries, a solid understanding of these domains is becoming increasingly crucial for aspiring engineers and technologists.\nThis course material has been structured to provide you with a formal introduction, balancing theoretical with practical, hands-on experience. We aim to demystify complex concepts and equip you with the initial tools and techniques to start your journey in AI and Data Science."
-  },
-  {
-    "objectID": "index.html#course-aims-and-philosophy",
-    "href": "index.html#course-aims-and-philosophy",
-    "title": "Preface",
-    "section": "",
-    "text": "The primary objectives of this course are:\n\nTo introduce the fundamental concepts, history, and scope of Artificial Intelligence.\nTo introduce the core principles and lifecycle of Data Science, including foundational statistics.\nTo familiarize you with essential tools and programming techniques used in AI and Data Science.\n\nOur teaching philosophy emphasizes a blend of theoretical lectures and practical lab sessions. The L-T-P-C structure of 2-0-2-3 reflects this, with dedicated hours for both conceptual understanding and applied problem-solving using industry-relevant programming languages and libraries."
-  },
-  {
-    "objectID": "index.html#what-you-will-learn",
-    "href": "index.html#what-you-will-learn",
-    "title": "Preface",
-    "section": "",
-    "text": "Throughout this course, we will explore three core units:\n\nFoundations of AI & Data Science: Delving into the history, core ideas, applications, and career landscapes of both AI and Data Science.\nIntelligent Agents & Introduction to Statistics: Understanding the building blocks of AI systems through intelligent agents and their environments, and laying the statistical groundwork necessary for Data Science, covering concepts from sampling to descriptive statistics.\nTools, Processes, and Applications: Equipping you with basic tools (primarily Python and its ecosystem), introducing the Data Science process pipeline, exploring data representation and pre-processing, and touching upon elementary applications of AI and Data Science.\n\nYou will gain hands-on experience with Python and key libraries such as NumPy for numerical operations, Pandas for data manipulation, Matplotlib/Seaborn for visualization, and a gentle introduction to Scikit-learn for basic machine learning tasks."
-  },
-  {
-    "objectID": "index.html#learning-outcomes",
-    "href": "index.html#learning-outcomes",
-    "title": "Preface",
-    "section": "",
-    "text": "Upon successful completion of this course, you will be able to:\n\nCO1: Analyse different elements of an AI system.\nCO2: Analyse different types of data representation.\nCO3: Apply concepts of AI and Data Science to solve canonical problems.\nCO4: Implement basic computational tools pertinent to AI and Data Science to solve canonical problems."
-  },
-  {
-    "objectID": "index.html#course-structure-and-approach",
-    "href": "index.html#course-structure-and-approach",
-    "title": "Preface",
-    "section": "",
-    "text": "The course is structured around weekly lectures that introduce new concepts, followed by lab sessions designed to reinforce these concepts through practical exercises. Learning will be assessed through a combination of:\n\nAssignments: To apply learned concepts to specific problems.\nQuizzes: To check understanding of key topics periodically.\nMid-Term Examination: To evaluate progress on the initial half of the course.\nTerm Project / End Semester Examination: A significant component allowing you to apply your cumulative knowledge to a practical problem or a comprehensive theoretical assessment."
-  },
-  {
-    "objectID": "index.html#a-note-to-students",
-    "href": "index.html#a-note-to-students",
-    "title": "Preface",
-    "section": "",
-    "text": "The study of AI and Data Science is an exciting endeavor. We encourage you to be curious, ask questions, actively participate in discussions, and diligently work through the lab exercises and assignments. The skills you develop in this course will serve as a strong foundation for more advanced topics and potentially for your future career.\nWe hope you find this course engaging, challenging, and rewarding. Let’s explore the fascinating world of AI and Data Science together!"
-  },
-  {
     "objectID": "unit3.html",
     "href": "unit3.html",
     "title": "Unit 3: Tools, Processes, and Applications in AI and DS",
@@ -117,6 +68,55 @@
     "title": "References",
     "section": "",
     "text": "References"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Preface",
+    "section": "",
+    "text": "Welcome to 23AID205: Introduction to AI and Machine Learning! This course is designed to be your foundational gateway into the exciting and rapidly evolving fields of Artificial Intelligence (AI) and Data Science (DS). In an era where data is ubiquitous and intelligent systems are transforming industries, a solid understanding of these domains is becoming increasingly crucial for aspiring engineers and technologists.\nThis course material has been structured to provide you with a formal introduction, balancing theoretical with practical, hands-on experience. We aim to demystify complex concepts and equip you with the initial tools and techniques to start your journey in AI and Data Science.\n\n\n\nThe primary objectives of this course are:\n\nTo introduce the fundamental concepts, history, and scope of Artificial Intelligence.\nTo introduce the core principles and lifecycle of Data Science, including foundational statistics.\nTo familiarize you with essential tools and programming techniques used in AI and Data Science.\n\nOur teaching philosophy emphasizes a blend of theoretical lectures and practical lab sessions. The L-T-P-C structure of 2-0-2-3 reflects this, with dedicated hours for both conceptual understanding and applied problem-solving using industry-relevant programming languages and libraries.\n\n\n\nThroughout this course, we will explore three core units:\n\nFoundations of AI & Data Science: Delving into the history, core ideas, applications, and career landscapes of both AI and Data Science.\nIntelligent Agents & Introduction to Statistics: Understanding the building blocks of AI systems through intelligent agents and their environments, and laying the statistical groundwork necessary for Data Science, covering concepts from sampling to descriptive statistics.\nTools, Processes, and Applications: Equipping you with basic tools (primarily Python and its ecosystem), introducing the Data Science process pipeline, exploring data representation and pre-processing, and touching upon elementary applications of AI and Data Science.\n\nYou will gain hands-on experience with Python and key libraries such as NumPy for numerical operations, Pandas for data manipulation, Matplotlib/Seaborn for visualization, and a gentle introduction to Scikit-learn for basic machine learning tasks.\n\n\n\nUpon successful completion of this course, you will be able to:\n\nCO1: Analyse different elements of an AI system.\nCO2: Analyse different types of data representation.\nCO3: Apply concepts of AI and Data Science to solve canonical problems.\nCO4: Implement basic computational tools pertinent to AI and Data Science to solve canonical problems.\n\n\n\n\nThe course is structured around weekly lectures that introduce new concepts, followed by lab sessions designed to reinforce these concepts through practical exercises. Learning will be assessed through a combination of:\n\nAssignments: To apply learned concepts to specific problems.\nQuizzes: To check understanding of key topics periodically.\nMid-Term Examination: To evaluate progress on the initial half of the course.\nTerm Project / End Semester Examination: A significant component allowing you to apply your cumulative knowledge to a practical problem or a comprehensive theoretical assessment.\n\n\n\n\nThe study of AI and Data Science is an exciting endeavor. We encourage you to be curious, ask questions, actively participate in discussions, and diligently work through the lab exercises and assignments. The skills you develop in this course will serve as a strong foundation for more advanced topics and potentially for your future career.\nWe hope you find this course engaging, challenging, and rewarding. Let’s explore the fascinating world of AI and Data Science together!"
+  },
+  {
+    "objectID": "index.html#welcome-to-introduction-to-ai-and-machine-learning-23aid205",
+    "href": "index.html#welcome-to-introduction-to-ai-and-machine-learning-23aid205",
+    "title": "Preface",
+    "section": "",
+    "text": "Welcome to 23AID205: Introduction to AI and Machine Learning! This course is designed to be your foundational gateway into the exciting and rapidly evolving fields of Artificial Intelligence (AI) and Data Science (DS). In an era where data is ubiquitous and intelligent systems are transforming industries, a solid understanding of these domains is becoming increasingly crucial for aspiring engineers and technologists.\nThis course material has been structured to provide you with a formal introduction, balancing theoretical with practical, hands-on experience. We aim to demystify complex concepts and equip you with the initial tools and techniques to start your journey in AI and Data Science."
+  },
+  {
+    "objectID": "index.html#course-aims-and-philosophy",
+    "href": "index.html#course-aims-and-philosophy",
+    "title": "Preface",
+    "section": "",
+    "text": "The primary objectives of this course are:\n\nTo introduce the fundamental concepts, history, and scope of Artificial Intelligence.\nTo introduce the core principles and lifecycle of Data Science, including foundational statistics.\nTo familiarize you with essential tools and programming techniques used in AI and Data Science.\n\nOur teaching philosophy emphasizes a blend of theoretical lectures and practical lab sessions. The L-T-P-C structure of 2-0-2-3 reflects this, with dedicated hours for both conceptual understanding and applied problem-solving using industry-relevant programming languages and libraries."
+  },
+  {
+    "objectID": "index.html#what-you-will-learn",
+    "href": "index.html#what-you-will-learn",
+    "title": "Preface",
+    "section": "",
+    "text": "Throughout this course, we will explore three core units:\n\nFoundations of AI & Data Science: Delving into the history, core ideas, applications, and career landscapes of both AI and Data Science.\nIntelligent Agents & Introduction to Statistics: Understanding the building blocks of AI systems through intelligent agents and their environments, and laying the statistical groundwork necessary for Data Science, covering concepts from sampling to descriptive statistics.\nTools, Processes, and Applications: Equipping you with basic tools (primarily Python and its ecosystem), introducing the Data Science process pipeline, exploring data representation and pre-processing, and touching upon elementary applications of AI and Data Science.\n\nYou will gain hands-on experience with Python and key libraries such as NumPy for numerical operations, Pandas for data manipulation, Matplotlib/Seaborn for visualization, and a gentle introduction to Scikit-learn for basic machine learning tasks."
+  },
+  {
+    "objectID": "index.html#learning-outcomes",
+    "href": "index.html#learning-outcomes",
+    "title": "Preface",
+    "section": "",
+    "text": "Upon successful completion of this course, you will be able to:\n\nCO1: Analyse different elements of an AI system.\nCO2: Analyse different types of data representation.\nCO3: Apply concepts of AI and Data Science to solve canonical problems.\nCO4: Implement basic computational tools pertinent to AI and Data Science to solve canonical problems."
+  },
+  {
+    "objectID": "index.html#course-structure-and-approach",
+    "href": "index.html#course-structure-and-approach",
+    "title": "Preface",
+    "section": "",
+    "text": "The course is structured around weekly lectures that introduce new concepts, followed by lab sessions designed to reinforce these concepts through practical exercises. Learning will be assessed through a combination of:\n\nAssignments: To apply learned concepts to specific problems.\nQuizzes: To check understanding of key topics periodically.\nMid-Term Examination: To evaluate progress on the initial half of the course.\nTerm Project / End Semester Examination: A significant component allowing you to apply your cumulative knowledge to a practical problem or a comprehensive theoretical assessment."
+  },
+  {
+    "objectID": "index.html#a-note-to-students",
+    "href": "index.html#a-note-to-students",
+    "title": "Preface",
+    "section": "",
+    "text": "The study of AI and Data Science is an exciting endeavor. We encourage you to be curious, ask questions, actively participate in discussions, and diligently work through the lab exercises and assignments. The skills you develop in this course will serve as a strong foundation for more advanced topics and potentially for your future career.\nWe hope you find this course engaging, challenging, and rewarding. Let’s explore the fascinating world of AI and Data Science together!"
   },
   {
     "objectID": "intro.html",
