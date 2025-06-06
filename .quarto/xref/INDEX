@@ -4,21 +4,27 @@
     "index.tex": "8dc0a85e"
   },
   "intro.qmd": {
-    "intro.html": "be8a5a83"
+    "intro.html": "be8a5a83",
+    "intro.tex": "70f69ffd"
   },
   "references.qmd": {
-    "references.html": "550b0df1"
+    "references.html": "550b0df1",
+    "references.tex": "36db17c5"
   },
   "summary.qmd": {
-    "summary.html": "c933646d"
+    "summary.html": "c933646d",
+    "summary.tex": "a5b59674"
   },
   "unit1.qmd": {
-    "unit1.html": "f64d41fe"
+    "unit1.html": "f64d41fe",
+    "unit1.tex": "fb3ebaa0"
   },
   "unit2.qmd": {
-    "unit2.html": "72601bda"
+    "unit2.html": "72601bda",
+    "unit2.tex": "b6f05d0b"
   },
   "unit3.qmd": {
-    "unit3.html": "1eb2ba36"
+    "unit3.html": "1eb2ba36",
+    "unit3.tex": "eabbfd92"
   }
 }
